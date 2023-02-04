@@ -3,7 +3,7 @@ const {
 } = require('../package')
 
 module.exports = {
-    title: 'Getting Started With ACPI',
+    title: 'ACPI入门',
     head: [
         ['meta', {
             name: 'theme-color',
@@ -55,41 +55,38 @@ module.exports = {
 
     themeConfig: {
         lastUpdated: true,
-        repo: 'https://github.com/dortania/Getting-Started-With-ACPI',
+        repo: 'https://github.com/sumingyd/Getting-Started-With-ACPI',
         editLinks: true,
-        editLinkText: 'Help us improve this page!',
+        editLinkText: '帮助我们改进此页!',
         logo: '/homepage.png',
         nav: [{
-            text: 'Dortania Guides',
-            items: [{
-                text: 'Home Site',
-                link: 'https://dortania.github.io/'
+            text: '指南菜单',
+            items: [
+            {
+                text: 'OpenCore安装指南',
+                link: 'https://sumingyd.github.io/OpenCore-Install-Guide/'
             },
             {
-                text: 'OpenCore Install Guide',
-                link: 'https://dortania.github.io/OpenCore-Install-Guide/'
+                text: 'OpenCore 安装后',
+                link: 'https://sumingyd.github.io/OpenCore-Post-Install/'
             },
             {
-                text: 'OpenCore Post-Install',
-                link: 'https://dortania.github.io/OpenCore-Post-Install/'
+                text: '无线购买指南',
+                link: 'https://sumingyd.github.io/Wireless-Buyers-Guide/'
             },
             {
-                text: 'Wireless Buyers Guide',
-                link: 'https://dortania.github.io/Wireless-Buyers-Guide/'
+                text: '显卡购买指南',
+                link: 'https://sumingyd.github.io/GPU-Buyers-Guide/'
             },
             {
-                text: 'GPU Buyers Guide',
-                link: 'https://dortania.github.io/GPU-Buyers-Guide/'
-            },
-            {
-                text: 'Anti Buyers Guide',
-                link: 'https://dortania.github.io/Anti-Hackintosh-Buyers-Guide/'
+                text: '避免购买指南',
+                link: 'https://sumingyd.github.io/Anti-Hackintosh-Buyers-Guide/'
             },
             ]
         },
         ],
         sidebar: [{
-            title: 'Introduction',
+            title: '简介',
             collapsable: false,
             sidebarDepth: 1,
             children: [
