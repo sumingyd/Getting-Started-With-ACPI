@@ -1,62 +1,62 @@
-# Table of contents
+# 目录
 
-* [Getting Started With ACPI](README.md)
-* [Choosing the SSDTs](ssdt-platform.md)
+* [开始使用ACPI](README.md)
+* [选择ssdt](ssdt-platform.md)
 
-## Methods
+## 方法
 
-* [How to create SSDTs](/ssdt-methods/ssdt-methods.md)
-  * [SSDTs: Prebuilt](/ssdt-methods/ssdt-prebuilt.md)
-  * [SSDTs: Easy Way](/ssdt-methods/ssdt-easy.md)
-  * [SSDTs: Long Way](/ssdt-methods/ssdt-long.md)
+* [如何创建ssdt](/ssdt-methods/ssdt-methods.md)
+  * [ssdt:预先构建的](/ssdt-methods/ssdt-prebuilt.md)
+  * [ssdt:简单方法](/ssdt-methods/ssdt-easy.md)
+  * [ssdt:漫漫长路](/ssdt-methods/ssdt-long.md)
 
-## Manual
+## 手册
 
-* [Dumping the DSDT](/Manual/dump.md)
-* [Decompiling and Compiling](/Manual/compile.md)
+* [转储DSDT](/Manual/dump.md)
+* [反编译和编译](/Manual/compile.md)
 
-## Desktop
+## 说面
 
-* [Disabling desktop dGPUs](/Desktops/desktop-disable.md)
+* [禁用桌面dgpu](/Desktops/desktop-disable.md)
 
-## Laptop
+## 笔记本电脑
 
-* [Backlight PNLF](/Laptops/backlight.md)
-  * [Prebuilt](/Laptops/backlight-methods/prebuilt.md)
-  * [Manual](/Laptops/backlight-methods/manual.md)
-* [Trackpad GPI0](/Laptops/trackpad.md)
-  * [Manual](/Laptops/trackpad-methods/manual.md)
-* [Disabling laptop dGPUs](/Laptops/laptop-disable.md)
+* [背光PNLF](/Laptops/backlight.md)
+  * [预先构建的](/Laptops/backlight-methods/prebuilt.md)
+  * [手动](/Laptops/backlight-methods/manual.md)
+* [触摸板GPI0](/Laptops/trackpad.md)
+  * [手动](/Laptops/trackpad-methods/manual.md)
+* [禁用笔记本电脑dgpu](/Laptops/laptop-disable.md)
 
-## Universal
+## 通用
 
-* [Embedded Controller](/Universal/ec-fix.md)
-  * [Prebuilt](/Universal/ec-methods/prebuilt.md)
+* [嵌入式控制器](/Universal/ec-fix.md)
+  * [预先构建的](/Universal/ec-methods/prebuilt.md)
   * [SSDTTime](/Universal/ec-methods/ssdttime.md)
-  * [Manual](/Universal/ec-methods/manual.md)
-* [CPU Power Management](/Universal/plug.md)
-  * [Prebuilt](/Universal/plug-methods/prebuilt.md)
+  * [手动](/Universal/ec-methods/manual.md)
+* [CPU电源管理](/Universal/plug.md)
+  * [预先构建的](/Universal/plug-methods/prebuilt.md)
   * [SSDTTime](/Universal/plug-methods/ssdttime.md)
-  * [Manual](/Universal/plug-methods/manual.md)
+  * [手动](/Universal/plug-methods/manual.md)
 * [AWAC vs RTC](/Universal/awac.md)
-  * [Prebuilt](/Universal/awac-methods/prebuilt.md)
-  * [Manual](/Universal/awac-methods/manual.md)
+  * [预先构建的](/Universal/awac-methods/prebuilt.md)
+  * [手动](/Universal/awac-methods/manual.md)
 * [NVRAM PMC](/Universal/nvram.md)
-  * [Prebuilt](/Universal/nvram-methods/prebuilt.md)
-  * [Manual](/Universal/nvram-methods/manual.md)
+  * [预先构建的](/Universal/nvram-methods/prebuilt.md)
+  * [手动](/Universal/nvram-methods/manual.md)
 * [USB RHUB](/Universal/rhub.md)
-  * [Prebuilt](/Universal/rhub-methods/prebuilt.md)
-  * [Manual](/Universal/rhub-methods/manual.md)
-* [IRQ Fix](/Universal/irq.md)
-* [GPU Spoof](/Universal/spoof.md)
-* [Fixing SMBus Support](/Universal/smbus.md)
-  * [Manual](/Universal/smbus-methods/manual.md)
+  * [预先构建的](/Universal/rhub-methods/prebuilt.md)
+  * [手动](/Universal/rhub-methods/manual.md)
+* [IRQ 修复](/Universal/irq.md)
+* [GPU欺骗](/Universal/spoof.md)
+* [修复SMBus支持](/Universal/smbus.md)
+  * [手动](/Universal/smbus-methods/manual.md)
 
-## Cleanup
+## 清理
 
-* [Cleanup](cleanup.md)
+* [清理](cleanup.md)
 
-## Misc
+## 杂项
 
-* [Troubleshooting](troubleshooting.md)
-* [Contributing](CONTRIBUTING.md)
+* [故障排除](troubleshooting.md)
+* [贡献](CONTRIBUTING.md)
