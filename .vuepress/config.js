@@ -57,7 +57,7 @@ module.exports = {
         lastUpdated: true,
         repo: 'https://github.com/sumingyd/Getting-Started-With-ACPI',
         editLinks: true,
-        editLinkText: '帮助我们改进此页!',
+        editLinkText: '帮助我们翻译此页!',
         logo: '/homepage.png',
         nav: [{
             text: '指南菜单',
