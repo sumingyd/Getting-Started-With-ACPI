@@ -3,7 +3,7 @@ const {
 } = require('../package')
 
 module.exports = {
-    title: 'ACPI入门',
+    title: '开始使用ACPI',
     head: [
         ['meta', {
             name: 'theme-color',
@@ -90,19 +90,19 @@ module.exports = {
             collapsable: false,
             sidebarDepth: 1,
             children: [
-                ['', 'Getting Started With ACPI'],
-                ['ssdt-platform', 'Choosing the SSDTs'],
+                ['', '开始使用ACPI'],
+                ['ssdt-platform', '选择SSDTs'],
             ]
 
         },
         {
-            title: 'Methods',
+            title: '方法',
             collapsable: false,
             sidebarDepth: 2,
             children: [
                 '/ssdt-methods/ssdt-methods',
                 {
-                    title: 'Methods',
+                    title: '方法',
                     collapsable: false,
                     sidebarDepth: 2,
                     children: [
@@ -114,7 +114,7 @@ module.exports = {
             ]
         },
         {
-            title: 'Manual',
+            title: '手动',
             collapsable: false,
             sidebarDepth: 1,
             children: [
@@ -123,38 +123,38 @@ module.exports = {
             ]
         },
         {
-            title: 'Desktop',
+            title: '桌面',
             collapsable: false,
             sidebarDepth: 1,
             children: [
-                ['/Desktops/desktop-disable', 'Disabling desktop dGPUs'],
+                ['/Desktops/desktop-disable', '禁用桌面dGPUs'],
             ]
         },
         {
-            title: 'Laptop',
+            title: '笔记本',
             collapsable: false,
             sidebarDepth: 0,
             children: [
-                ['/Laptops/backlight', 'Fixing Backlight'],
+                ['/Laptops/backlight', '修复背光'],
                 {
-                    title: 'Methods',
+                    title: '方法',
                     collapsable: true,
                     sidebarDepth: 2,
                     children: [
-                        ['/Laptops/backlight-methods/prebuilt', 'Prebuilt'],
-                        ['/Laptops/backlight-methods/manual', 'Manual'],
+                        ['/Laptops/backlight-methods/prebuilt', '预构建'],
+                        ['/Laptops/backlight-methods/manual', '手动'],
                     ]
                 },
-                ['/Laptops/trackpad', 'Fixing Trackpad'],
+                ['/Laptops/trackpad', '修复触摸板'],
                 {
-                    title: 'Methods',
+                    title: '方法',
                     collapsable: true,
                     sidebarDepth: 2,
                     children: [
-                        ['/Laptops/trackpad-methods/manual', 'Manual'],
+                        ['/Laptops/trackpad-methods/manual', '预构建'],
                     ]
                 },
-                ['/Laptops/laptop-disable', 'Disabling laptop dGPUs'],
+                ['/Laptops/laptop-disable', '禁用笔记本dGPUs'],
             ]
         },
         {
@@ -162,110 +162,110 @@ module.exports = {
             collapsable: false,
             sidebarDepth: 0,
             children: [
-                ['/Universal/ec-fix', 'Embedded Controller'],
+                ['/Universal/ec-fix', '嵌入式控制器'],
                 {
-                    title: 'Methods',
+                    title: '方法',
                     collapsable: true,
                     sidebarDepth: 2,
                     children: [
-                        ['/Universal/ec-methods/prebuilt', 'Prebuilt'],
+                        ['/Universal/ec-methods/prebuilt', '预构建'],
                         ['/Universal/ec-methods/ssdttime', 'SSDTTime'],
-                        ['/Universal/ec-methods/manual', 'Manual'],
+                        ['/Universal/ec-methods/manual', '手动'],
                     ]
                 },
-                ['/Universal/plug', 'CPU Power Management'],
+                ['/Universal/plug', 'CPU电源管理'],
                 {
-                    title: 'Methods',
+                    title: '方法',
                     collapsable: true,
                     sidebarDepth: 2,
                     children: [
-                        ['/Universal/plug-methods/prebuilt', 'Prebuilt'],
+                        ['/Universal/plug-methods/prebuilt', '预构建'],
                         ['/Universal/plug-methods/ssdttime', 'SSDTTime'],
-                        ['/Universal/plug-methods/manual', 'Manual'],
+                        ['/Universal/plug-methods/manual', '手动'],
                     ]
                 },
                 ['/Universal/awac', 'AWAC vs RTC'],
                 {
-                    title: 'Methods',
+                    title: '方法',
                     collapsable: true,
                     sidebarDepth: 2,
                     children: [
-                        ['/Universal/awac-methods/prebuilt', 'Prebuilt'],
+                        ['/Universal/awac-methods/prebuilt', '预构建'],
                         ['/Universal/awac-methods/ssdttime', 'SSDTTime'],
-                        ['/Universal/awac-methods/manual', 'Manual'],
-                        ['/Universal/awac-methods/manual-hedt', 'Manual HEDT'],
+                        ['/Universal/awac-methods/manual', '手动'],
+                        ['/Universal/awac-methods/manual-hedt', '手动 HEDT'],
                     ]
                 },
                 ['/Universal/nvram', 'NVRAM PMC'],
                 {
-                    title: 'Methods',
+                    title: '方法',
                     collapsable: true,
                     sidebarDepth: 2,
                     children: [
-                        ['/Universal/nvram-methods/prebuilt', 'Prebuilt'],
+                        ['/Universal/nvram-methods/prebuilt', '预构建'],
                         ['/Universal/nvram-methods/ssdttime', 'SSDTTime'],
-                        ['/Universal/nvram-methods/manual', 'Manual'],
+                        ['/Universal/nvram-methods/manual', '手动'],
                     ]
                 },
                 ['/Universal/rhub', 'USB RHUB'],
                 {
-                    title: 'Methods',
+                    title: '方法',
                     collapsable: true,
                     sidebarDepth: 2,
                     children: [
-                        ['/Universal/rhub-methods/prebuilt', 'Prebuilt'],
+                        ['/Universal/rhub-methods/prebuilt', '预构建'],
                         ['/Universal/rhub-methods/ssdttime', 'SSDTTime'],
-                        ['/Universal/rhub-methods/manual', 'Manual'],
+                        ['/Universal/rhub-methods/manual', '手动'],
                     ]
                 },
                 ['/Universal/imei', 'IMEI'],
                 {
-                    title: 'Methods',
+                    title: '方法',
                     collapsable: true,
                     sidebarDepth: 2,
                     children: [
-                        ['/Universal/imei-methods/prebuilt', 'Prebuilt'],
-                        ['/Universal/imei-methods/manual', 'Manual'],
+                        ['/Universal/imei-methods/prebuilt', '预构建'],
+                        ['/Universal/imei-methods/manual', '手动'],
                     ]
                 },
-                ['/Universal/unc0', 'Fixing Uncore Bridge'],
+                ['/Universal/unc0', '修复Uncore桥'],
                 {
-                    title: 'Methods',
+                    title: '方法',
                     collapsable: true,
                     sidebarDepth: 2,
                     children: [
-                        ['/Universal/unc0-methods/prebuilt', 'Prebuilt'],
-                        ['/Universal/unc0-methods/manual', 'Manual'],
+                        ['/Universal/unc0-methods/prebuilt', '预构建'],
+                        ['/Universal/unc0-methods/manual', '方法'],
                     ]
                 },
-                ['/Universal/smbus', 'Fixing SMBus Support'],
+                ['/Universal/smbus', '修复SMBus支持'],
                 {
-                    title: 'Methods',
+                    title: '方法',
                     collapsable: true,
                     sidebarDepth: 2,
                     children: [
-                        ['/Universal/smbus-methods/manual', 'Manual'],
+                        ['/Universal/smbus-methods/manual', '手动'],
                     ]
                 },
-                ['/Universal/irq', 'IRQ Fix'],
-                ['/Universal/spoof', 'GPU Spoof'],
+                ['/Universal/irq', 'IRQ修复'],
+                ['/Universal/spoof', 'GPU欺骗'],
             ]
         },
         {
-            title: 'Cleanup',
+            title: '清理',
             collapsable: false,
             sidebarDepth: 1,
             children: [
-                ['cleanup', 'Cleanup'],
+                ['cleanup', '清理'],
             ]
         },
         {
-            title: 'Misc',
+            title: '其他',
             collapsable: false,
             sidebarDepth: 1,
             children: [
-                ['troubleshooting', 'Troubleshooting'],
-                ['CONTRIBUTING', 'Contributing'],
+                ['troubleshooting', '故障排除'],
+                ['CONTRIBUTING', '贡献'],
             ]
         },
         ],
