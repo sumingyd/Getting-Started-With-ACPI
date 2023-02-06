@@ -11,7 +11,7 @@
 
 To find the ACPI pathing, you have 2 methods:
 
-* [DSDT](#DSDT)
+* [DSDT](#dsdt)
 * [DeviceManager](#devicemanager)
 
 ### DSDT
