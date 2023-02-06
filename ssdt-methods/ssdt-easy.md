@@ -1,75 +1,75 @@
-# SSDTs: The easy way
+# SSDTs:简单的方法
 
-So here we'll be using a super simple tool made by CorpNewt: [SSDTTime](https://github.com/corpnewt/SSDTTime)
+所以这里我们将使用CorpNewt制作的一个超级简单的工具:[SSDTTime](https://github.com/corpnewt/SSDTTime)
 
-What this tool does is, it dumps your DSDT from your firmware, and then creates SSDTs based off your DSDT. **This must be done on the target machine running either Windows or Linux**
+这个工具的作用是，它从固件中转储DSDT，然后根据DSDT创建ssdt。**这必须在运行Windows或Linux的目标机器上完成**
 
-## So what **CAN'T** SSDTTime do
+## 所以什么是SSDTTime不能做的
 
 * **SSDT-PNLF**:
-  * Need to be configured to your system
+  * 需要配置到您的系统
 * **SSDT-GPI0**:
-  * Need to be configured to your system
+  * 需要配置到您的系统
 * **USBX SSDT**:
-  * This is included on sample SSDTs but SSDTTime only makes the SSDT-EC part, Skylake and newer users can grab a pre-built here: [SSDT-USBX.aml](https://github.com/dortania/OpenCore-Post-Install/blob/master/extra-files/SSDT-USBX.aml)
+  * 这包含在示例ssdt中，但SSDTTime仅使SSDT-EC部分，Skylake和较新的用户可以在这里获取预构建: [SSDT-USBX.aml](https://github.com/dortania/OpenCore-Post-Install/blob/master/extra-files/SSDT-USBX.aml)
 * **IMEI SSDT**:
-  * If you have either a Sandy bridge CPU with 7 series motherboard or Ivy Bridge with 6 series motherboard, you'll need to either use the prebuilt or manually create it.
+  * 如果你有Sandy bridge和7系列主板，或者Ivy bridge和6系列主板，你需要使用预建的或者手动创建它。
 * **RTC0 RANGE SSDT**:
-  If you have X99 or X299, you'll need to configure it to your system
+  如果您使用的是X99或X299，则需要将其配置到您的系统
 
-For users who don't have all the options available to them in SSDTTime, you can follow the "SSDTs: The long way" section. You can still use SSDTTime for SSDTs it does support.
+对于在SSDTTime中没有所有可用选项的用户，您可以遵循“ssdtts:漫长的路”部分。对于它所支持的ssdt，您仍然可以使用SSDTTime。
 
-## Running SSDTTime
+## 运行SSDTTime
 
-Run the `SSDTTime.bat` file as Admin on the target machine and you should see something like this:
+在目标机器上以管理员身份运行`SSDTTime.bat`文件，你应该会看到如下内容:
 
 ![](../images/ssdt-easy-md/ssdttime.png)
 
-What are all these options?:
+这些选项都是什么?：
 
-* `1. FixHPET    - Patch out IRQ Conflicts`
-  * IRQ patching, mainly needed for X79, X99 and laptop users(use option `C` to omit conflicting legacy IRQs)
-* `2. FakeEC     - OS-aware Fake EC`
-  * This is the SSDT-EC, required for Catalina users
-* `3. FakeEC Laptop  - OS-aware Fake EC`
-  * This is the SSDT-EC, but the laptop version only Builds Fake EC and leaves the existing EC devices untouched, again required for Catalina users
-* `4. PluginType - Sets plugin-type = 1 on First ProcessorObj`
-  * This is the SSDT-PLUG, for Intel only
-* `5. PMC - Sets Power Management controller status`
-  * This is the SSDT-PMC, for Intel true 300+ series only, this device is missing from ACPI in recent boards and helps to bring back NVRAM support.
-* `6. AWAC - Context-Aware AWAC Disable and RTC Fake`
-  * This is the SSDT-AWAC/RTC0, its purpose  is to fix the system clocks found on newer hardware
-* `7. USB Reset     - Reset USB controllers to allow hardware mapping`
-  * This is SSDT-RHUB, used for resetting USB ports in macOS for Asus's Z490 motherboards
-* `8. Dump DSDT  - Automatically dump the system DSDT`
-  * Dumps your DSDT from your firmware
+* `1. FixHPET    - 修补IRQ冲突`
+  * IRQ补丁，主要用于X79, X99和笔记本电脑用户(使用选项`C`来省略冲突的遗留IRQ)
+* `2. FakeEC     - 操作系统知道假EC`
+  * 这是SSDT-EC，用于Catalina用户
+* `3. FakeEC Laptop  - 基于操作系统的FakeEC`
+  * 这是SSDT-EC，但笔记本版本只构建假的EC，并保留现有的EC设备，这也是卡特琳娜用户所需要的 required for Catalina users
+* `4. PluginType - 在第一个ProcessorObj上设置plugin-type = 1`
+  * 这是SSDT-PLUG，仅供英特尔使用
+* `5. PMC - 设置电源管理控制器状态`
+  * 这是SSDT-PMC，仅适用于英特尔真正的300+系列，该设备在最近的ACPI主板中缺失，并有助于恢复NVRAM支持。
+* `6. AWAC - 上下文感知的AWAC禁用和RTC假`
+  * 这是SSDT-AWAC/RTC0，其目的是修复在新硬件上发现的系统时钟
+* `7. USB Reset     - 重置USB控制器以允许硬件映射`
+  * 这是SSDT-RHUB，用于在macOS中重置华硕Z490主板的USB端口
+* `8. Dump DSDT  - 自动转储系统DSDT`
+  * 从固件中转储您的DSDT
 
-What we want to do is select option `8. Dump DSDT` first, then select the appropriate option(s) for your system.
+我们要做的是选择选项`8.首先转储DSDT`，然后为您的系统选择适当的选项。
 
-> What about USBX?
+> USBX呢?
 
-For Skylake and newer plus AMD, you can grab a pre-built file here: [SSDT-USBX.aml](https://github.com/dortania/OpenCore-Post-Install/blob/master/extra-files/SSDT-USBX.aml). This file is plug and play and requires no device configuration, **do not use on Broadwell and older**.
+对于Skylake和更新的plus AMD，您可以在这里获取预构建文件:[SSDT-USBX.aml](https://github.com/dortania/OpenCore-Post-Install/blob/master/extra-files/SSDT-USBX.aml). 该文件是即插即用的，不需要设备配置，**请勿在Broadwell及更老版本上使用**。
 
-**Troubleshooting note**: See [General Troubleshooting](https://dortania.github.io/OpenCore-Install-Guide/troubleshooting/troubleshooting.html) if you're having issues running SSDTTime
+**故障排除注意**:如果运行SSDTTime有问题，请参阅[通用故障排除](https://sumingyd.github.io/OpenCore-Install-Guide/troubleshooting/troubleshooting.html)。
 
-## Adding to OpenCore
+## 添加到OpenCore
 
-Don't forget that SSDTs need to be added to OpenCore, reminder that .aml is complied, .dsl is code. **Add only the .aml file**:
+别忘了ssdt需要添加到OpenCore,提醒人们, .aml已编译, .dsl代码。**只添加.aml文件**:
 
 * EFI/OC/ACPI
 * config.plist -> ACPI -> Add
 
-Reminder that Cmd/Ctrl+R with ProperTree pointed at your OC folder will add all your SSDTs, kexts and .efi drivers to the config for you. **Do not add your DSDT to OpenCore, its already in your firmware**. If you are unsure what this is referring to, go back to the OpenCore guide and select your config based of the architecture of your CPU.
+提醒一下，Cmd/Ctrl+R和ProperTree指向你的OC文件夹将为你添加所有的ssdt, kext和.efi驱动程序到配置中。**不要将你的DSDT添加到OpenCore，它已经在你的固件中了**。如果您不确定这指的是什么，请返回OpenCore指南，并根据您的CPU架构选择您的配置。
 
-For those who do not yet have a config.plist, you'll want to next head back to your respective OpenCore guides and create the config.plist:
+对于那些还没有配置的人。接下来，你需要回到各自的OpenCore指南并创建config.plist:
 
-* [OpenCore Install guide](https://dortania.github.io/OpenCore-Install-Guide/)
+* [OpenCore安装指南](https://sumingyd.github.io/OpenCore-Install-Guide/)
 
-Users of `FixHPET` will also need to merge oc_patches.plist into their config.plist
+`FixHPET`的用户还需要将oc_patches.plist合并到config.plist中
 
-Steps to do this:
+步骤如下:
 
-* Open both files,
-* Delete the `ACPI -> Patch` section from config.plist
-* Copy the `ACPI -> Patch` section from patches.plist
-* Paste into where old patches were in config.plist
+* 打开两个文件，
+* 从config.plist中删除`ACPI -> Patch`部分
+* 从patches.plist中复制`ACPI -> Patch`部分
+* 粘贴到config.plist中旧补丁所在的位置

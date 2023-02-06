@@ -1,20 +1,20 @@
-# What SSDTs do each platform need
+# 每个平台需要什么ssdt
 
-Please see the **specific ACPI section of your config.plist**, all SSDTs needed are covered there with a brief explainer. But here's a very quick TL;DR:
+请参阅**config.plist中的特定ACPI部分**，所有需要的ssdt都在那里有一个简要的解释。但这里有一个简短的TL;DR:
 
-* [What SSDTs do each platform need](#what-ssdts-do-each-platform-need)
-  * [Desktop](#desktop)
-  * [High End Desktop](#high-end-desktop)
-  * [Laptop](#laptop)
-* [SSDT Creation](#ssdt-creation)
+* [每个平台需要什么ssdt](#what-ssdts-do-each-platform-need)
+  * [桌面](#desktop)
+  * [高端桌面](#high-end-desktop)
+  * [笔记本](#laptop)
+* [SSDT创建](#ssdt-creation)
 
-## Desktop
+## 桌面
 
-| Platforms | **CPU** | **EC** | **AWAC** | **NVRAM** | **USB** |
+| 平台 | **CPU** | **EC** | **AWAC** | **NVRAM** | **USB** |
 | :-------: | :-----: | :----: | :------: | :-------: | :-----: |
 | Penryn | N/A | [SSDT-EC](./Universal/ec-fix) | N/A | N/A | N/A |
 | Lynnfield and Clarkdale | ^^ | ^^ | ^^ | ^^ | ^^ |
-| SandyBridge | [CPU-PM](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html#sandy-and-ivy-bridge-power-management) (Run in Post-Install) | ^^ | ^^ | ^^ | ^^ |
+| SandyBridge | [CPU-PM](https://sumingyd.github.io/OpenCore-Post-Install/universal/pm.html#sandy-and-ivy-bridge-power-management) (在安装后运行) | ^^ | ^^ | ^^ | ^^ |
 | Ivy Bridge | ^^ | ^^ | ^^ | ^^ | ^^ |
 | Haswell | [SSDT-PLUG](./Universal/plug) | ^^ | ^^ | ^^ | ^^ |
 | Broadwell | ^^ | ^^ | ^^ | ^^ | ^^ |
@@ -23,11 +23,11 @@ Please see the **specific ACPI section of your config.plist**, all SSDTs needed 
 | Coffee Lake | ^^ | ^^ | [SSDT-AWAC](./Universal/awac) | [SSDT-PMC](./Universal/nvram) | ^^ |
 | Comet Lake | ^^ | ^^ | ^^ | N/A | [SSDT-RHUB](./Universal/rhub) |
 | AMD (15/16h) | N/A | ^^ | N/A | ^^ | N/A |
-| AMD (17h) | [SSDT-CPUR for B550 and A520](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-CPUR.aml) | ^^ | ^^ | ^^ | ^^ |
+| AMD (17h) | [SSDT-CPUR 用于B550和A520](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-CPUR.aml) | ^^ | ^^ | ^^ | ^^ |
 
-## High End Desktop
+## 高端桌面
 
-| Platforms | **CPU** | **EC** | **RTC** | **PCI** |
+| 平台 | **CPU** | **EC** | **RTC** | **PCI** |
 | :-------: | :-----: | :----: | :-----: | :-----: |
 | Nehalem and Westmere | N/A | [SSDT-EC](./Universal/ec-fix.html) | N/A | N/A |
 | Sandy Bridge-E | ^^ | ^^ | ^^ | [SSDT-UNC](./Universal/unc0) |
@@ -36,14 +36,14 @@ Please see the **specific ACPI section of your config.plist**, all SSDTs needed 
 | Broadwell-E | ^^ | ^^ | ^^ | ^^ |
 | Skylake-X | ^^ | ^^ | ^^ | N/A |
 
-## Laptop
+## 笔记本电脑
 
-| Platforms | **CPU** | **EC** | **Backlight** | **I2C Trackpad** | **AWAC** | **USB** | **IRQ** |
+| 平台 | **CPU** | **EC** | **Backlight** | **I2C Trackpad** | **AWAC** | **USB** | **IRQ** |
 | :-------: | :-----: | :----: | :-----------: | :--------------: | :------: | :-----: | :-----: |
 | Clarksfield and Arrandale | N/A | [SSDT-EC](./Universal/ec-fix) | [SSDT-PNLF](./Laptops/backlight) | N/A | N/A | N/A | [IRQ SSDT](./Universal/irq) |
-| SandyBridge | [CPU-PM](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html#sandy-and-ivy-bridge-power-management) (Run in Post-Install) | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
+| SandyBridge | [CPU-PM](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html#sandy-and-ivy-bridge-power-management) (在安装后运行) | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
 | Ivy Bridge | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
-| Haswell | [SSDT-PLUG](./Universal/plug) | ^^ | ^^ | [SSDT-XOSI/SSDT-GPI0](./Laptops/trackpad) (Run in Post-Install) | ^^ | ^^ | ^^ |
+| Haswell | [SSDT-PLUG](./Universal/plug) | ^^ | ^^ | [SSDT-XOSI/SSDT-GPI0](./Laptops/trackpad) (在安装后运行) | ^^ | ^^ | ^^ |
 | Broadwell | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
 | Skylake | ^^ | [SSDT-EC-USBX](./Universal/ec-fix) | ^^ | ^^ | ^^ | ^^ | N/A |
 | Kaby Lake | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
@@ -52,9 +52,9 @@ Please see the **specific ACPI section of your config.plist**, all SSDTs needed 
 | Comet Lake | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
 | Ice Lake | ^^ | ^^ | ^^ | ^^ | ^^ | [SSDT-RHUB](./Universal/rhub) | ^^ |
 
-Continuing:
+继续:
 
-| Platforms | **NVRAM** | **IMEI** |
+| 平台 | **NVRAM** | **IMEI** |
 | :-------: | :-------: | :------: |
 | Clarksfield and Arrandale | N/A | N/A |
 | Sandy Bridge | ^^| [SSDT-IMEI](./Universal/imei) |
@@ -63,9 +63,9 @@ Continuing:
 | Broadwell | ^^ | ^^ |
 | Skylake | ^^ | ^^ |
 | Kaby Lake | ^^ | ^^ |
-| Coffee Lake (8th Gen) and Whiskey Lake | ^^ | ^^ |
+| Coffee Lake (8th Gen) 和 Whiskey Lake | ^^ | ^^ |
 | Coffee Lake (9th Gen) | [SSDT-PMC](./Universal/nvram) | ^^ |
 | Comet Lake | N/A | ^^ |
 | Ice Lake | ^^ | ^^ |
 
-## [SSDT Creation](./ssdt-methods/ssdt-methods.md)
+## [SSDT创建](./ssdt-methods/ssdt-methods.md)
