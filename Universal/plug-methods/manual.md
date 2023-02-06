@@ -1,7 +1,7 @@
 # Fixing Power Management: Manual
 
 * [Finding the ACPI path](#finding-the-acpi-path)
-  * [DSDT](#DSDT)
+  * [DSDT](#dsdt)
   * [DeviceManager](#devicemanager)
 * [Edits to the sample SSDT](#edits-to-the-sample-ssdt)
 * [Compiling the SSDT](#compiling-the-ssdt)

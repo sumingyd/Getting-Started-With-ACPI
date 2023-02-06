@@ -2,11 +2,11 @@
 
 请参阅**config.plist中的特定ACPI部分**，所有需要的ssdt都在那里有一个简要的解释。但这里有一个简短的TL;DR:
 
-* [每个平台需要什么ssdt](#what-ssdts-do-each-platform-need)
-  * [桌面](#desktop)
-  * [高端桌面](#high-end-desktop)
-  * [笔记本](#laptop)
-* [SSDT创建](#ssdt-creation)
+* [每个平台需要什么ssdt](#每个平台需要什么ssdt)
+  * [桌面](#桌面)
+  * [高端桌面](#高端桌面)
+  * [笔记本](#笔记本电话)
+* [SSDT创建](#ssdt创建)
 
 ## 桌面
 
