@@ -1,11 +1,6 @@
 # 故障排除
 
-* [修复 SSDTTime: `无法定位或下载iasl!`](#修复ssdttime-无法定位或下载iasl)
-* [无法运行 `acpidump.efi`](#无法在opencore运行acpidump-efi)
-* [iASL 警告, # 未解决](#iasl警告未解决)
-* [编译错误](#编译错误)
-* [Invalid character (0x3D), expecting ASL keyword or name](#invalid-character-0x3d-expecting-asl-keyword-or-name)
-* [Syntax error, unexpected PARSEOP_ONE, expecting '('](#syntax-error-unexpected-parseop_one-expecting)
+[[toc]]
 
 ## 修复SSDTTime: `无法定位或下载iasl!`
 
