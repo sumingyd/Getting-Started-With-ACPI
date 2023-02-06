@@ -63,12 +63,20 @@ module.exports = {
             text: '指南菜单',
             items: [
             {
-                text: 'OpenCore安装指南',
+                text: 'OpenCore安装',
                 link: 'https://sumingyd.github.io/OpenCore-Install-Guide/'
             },
             {
-                text: 'OpenCore 安装后',
+                text: 'OpenCore安装后',
                 link: 'https://sumingyd.github.io/OpenCore-Post-Install/'
+            },
+            {
+                text: 'OpenCore多重引导',
+                link: 'https://sumingyd.github.io/OpenCore-Multiboot/'
+            },
+            {
+                text: '开始使用ACPI',
+                link: 'https://sumingyd.github.io/Getting-Started-With-ACPI/'
             },
             {
                 text: '无线购买指南',
