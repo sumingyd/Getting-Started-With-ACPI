@@ -1,11 +1,11 @@
-# Fixing Backlight: Prebuilt
+# 修复背光:预构建
 
-By far the easiest method, all you need to do is download the following file:
+到目前为止最简单的方法，你所需要做的就是下载以下文件:
 
 * [SSDT-PNLF.aml](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PNLF.aml)
 
-Main things to note with this method:
+使用这种方法需要注意的主要事项:
 
-* Assumes GPU pathing, works great for 99% of devices but if you're having issues controlling backlight this may be something to look at
-* Doesn't really teach you anything
-  * For most, this doesn't matter. But to some knowing what makes your hackintosh tick is part of the journey
+* 假设是GPU路径，适用于99%的设备，但如果您在控制背光方面存在问题，则可能需要考虑一下
+* 并不能真正教会你任何东西
+  * 对于大多数人来说，这并不重要。但对一些人来说，了解是什么让你的黑苹果运转是旅程的一部分
