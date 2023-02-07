@@ -172,7 +172,7 @@ module.exports = {
             ]
         },
         {
-            title: 'Universal',
+            title: '通用',
             collapsable: false,
             sidebarDepth: 0,
             children: [
