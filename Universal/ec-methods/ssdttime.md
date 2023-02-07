@@ -1,27 +1,27 @@
-# Fixing Embedded Controllers: SSDTTime
+# 修复嵌入式控制器:SSDTTime
 
-The second involves using SSDTTime which automates most of the process. See here on how to use it: [SSDTs: Easy Way](/ssdt-methods/ssdt-easy.md)
+第二种方法涉及使用SSDTTime，它可以自动执行大部分流程。看这里如何使用它:[SSDTs: 简单的方法](/ssdt-methods/ssdt-easy.md)
 
-To get the SSDT-EC on desktops, run the following:
+要在桌面电脑上获取SSDT-EC，请执行以下命令:
 
-* `7. Dump DSDT` then run `2. FakeEC`
+* `7. Dump DSDT` 然后运行 `2. FakeEC`
 
-To get the SSDT-EC on laptops, run the following:
+要在笔记本电脑上获得SSDT-EC，运行以下命令:
 
-* `7. Dump DSDT` then run `3.  FakeEC Laptop`
+* `7. Dump DSDT` 然后运行 `3.  FakeEC Laptop`
 
-This will provide you with some files, the main one you care about is SSDT-EC.**aml**. The DSDT and .dsl are only left for referencing or verification.
+这将为您提供一些文件，您关心的主要文件是SSDT-EC.**aml**。DSDT和.dsl只用于引用或验证。
 
-The main things to note with this method:
+使用此方法需要注意的主要事项:
 
-* Doesn't provide you the USBX property to fix power
-  * This can easily be fixed by using this prebuilt file in addition to SSDT-EC: [SSDT-USBX.aml](https://github.com/dortania/OpenCore-Post-Install/blob/master/extra-files/SSDT-USBX.aml)
-  * Note USBX is only needed for Skylake and newer
-* Doesn't really teach you anything
-  * For most, this doesn't matter. But to some knowing what makes your hackintosh tick is part of the journey
+* 不提供USBX属性来解决电源问题
+  * 除了使用SSDT-EC之外，还可以使用此预构建文件轻松修复: [SSDT-USBX.aml](https://github.com/dortania/OpenCore-Post-Install/blob/master/extra-files/SSDT-USBX.aml)
+  * 注意USBX仅适用于Skylake和更新版本
+* 并不能真正教会你任何东西
+  * 对大多数人来说，这并不重要。但对一些人来说，了解是什么让你的黑苹果运转是旅程的一部分
 
-## Wrapping up
+## 结束
 
-Once you're done making your SSDT, either head to the next page to finish the rest of the SSDTs or head here if you're ready to wrap up:
+完成SSDT后，可以转到下一页完成其余的SSDT，如果准备好了，可以转到此处:
 
-* [**Cleanup**](/cleanup.md)
+* [**清理**](/cleanup.md)

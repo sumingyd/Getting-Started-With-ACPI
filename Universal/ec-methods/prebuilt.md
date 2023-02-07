@@ -1,30 +1,30 @@
-# Fixing Embedded Controllers: Prebuilt
+# 修复嵌入式控制器:预构建
 
-By far the easiest way to fix your Embedded Controller is just downloading one of the files below:
+到目前为止，修复嵌入式控制器最简单的方法就是下载下面的一个文件:
 
-**Desktop**:
+**桌面**:
 
 * [SSDT-EC-USBX-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-USBX-DESKTOP.aml)
-  * For Skylake desktops and newer and AMD CPU based systems
+  * 适用于Skylake台式机和更新的AMD CPU系统
 * [SSDT-EC-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-DESKTOP.aml)
-  * For Broadwell desktops and older
+  * 适用于Broadwell台式机及更老版本
 
-**Laptops**:
+**笔记本**:
 
 * [SSDT-EC-USBX-LAPTOP.aml](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-USBX-LAPTOP.aml)
-  * For Skylake laptops and newer
+  * 适用于Skylake及更新的笔记本电脑
 * [SSDT-EC-LAPTOP.aml](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-LAPTOP.aml)
-  * For Broadwell laptops and older
+  * 适用于Broadwell笔记本电脑及更旧的电脑
 
-The main things to note with this method:
+使用这种方法需要注意的主要事情:
 
-* Quite Bloated
-  * There's ACPI naming for every type, this means there's added delays in boot times
-* Doesn't really teach you anything
-  * For most, this doesn't matter. But to some knowing what makes your hackintosh tick is part of the journey
+* 相当臃肿
+  * 每种类型都有ACPI命名，这意味着启动时间会有额外的延迟
+* 并不能真正教会你任何东西
+  * 对大多数人来说，这并不重要。但对一些人来说，了解是什么让你的黑苹果运转是旅程的一部分
 
-## Wrapping up
+## 结束
 
-Once you're done making your SSDT, either head to the next page to finish the rest of the SSDTs or head here if you're ready to wrap up:
+完成SSDT后，可以转到下一页完成其余的SSDT，如果准备好了，可以转到此处:
 
-* [**Cleanup**](/cleanup.md)
+* [**清理**](/cleanup.md)
