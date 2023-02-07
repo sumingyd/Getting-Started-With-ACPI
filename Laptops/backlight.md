@@ -1,15 +1,12 @@
-# Fixing Backlight (SSDT-PNLF)
+# 修复背光 (SSDT-PNLF)
 
-* [What this SSDT does](#what-this-ssdt-does)
-* [Methods to make this SSDT](#methods-to-make-this-ssdt)
+## 这个SSDT做什么
 
-## What this SSDT does
+这个SSDT的目的是创建一个供macOS使用的PNLF设备，特别是一个硬件ID为`APP0002`的设备。幸运的是，WhateverGreen会帮我们处理剩下的工作。
 
-The purpose of this SSDT is to create a PNLF device for macOS to play with, specifically one with a hardware ID of `APP0002`. Luckily WhateverGreen will handle the rest of the work for us.
+## 使其成为SSDT的方法
 
-## Methods to make this SSDT
+对于背光修复，有2种方法可以选择:
 
-For the backlight fix, there are 2 methods you can choose from:
-
-* [Prebuilt](/Laptops/backlight-methods/prebuilt.md)
-* [Manual](/Laptops/backlight-methods/manual.md)
+* [预先构建的](/Laptops/backlight-methods/prebuilt.md)
+* [手动](/Laptops/backlight-methods/manual.md)
