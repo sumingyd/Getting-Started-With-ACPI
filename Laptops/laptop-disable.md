@@ -1,34 +1,33 @@
-# Disabling laptop dGPUs (SSDT-dGPU-Off/NoHybGfx)
+# 禁用笔记本电脑dgpu (SSDT-dGPU-Off/NoHybGfx)
 
-So with laptops, we can hide the dGPU from macOS with the little boot-arg called `-wegnoegpu` from WhateverGreen. But one small problem, the dGPU is still pulling power draining your battery slowly. We'll be going over 2 methods for disabling the dGPU in a laptop:
+所以对于笔记本电脑，我们可以用WhateverGreen的`-wegnoegpu`引导参数隐藏macOS中的dGPU。但是有一个小问题，dGPU仍然在缓慢地消耗你的电量。我们将介绍在笔记本电脑中禁用dGPU的两种方法:
 
-* [Optimus Method](/Laptops/laptop-disable.md#optimus-method)
-* [Bumblebee Method](/Laptops/laptop-disable.md#bumblebee-method)
+[[toc]]]
 
-Note that this is not needed for install, but recommended for post-install
+注意，安装时不需要这样做，但建议安装后使用
 
-## Optimus Method
+## Optimus 方法
 
-How this works is that we call the `.off` method found on Optimus GPUs, this is the expected way to power off a GPU but some may find their dGPU will power back up later on. Mainly seen in Lenovo's, the Optimus method should work for most users:
+这是如何工作的，我们在Optimus GPU上调用`.off`方法，这是预期的关闭GPU的方式，但有些人可能会发现他们的dGPU稍后会重新通电。主要出现在联想，Optimus方法应该适用于大多数用户:
 
-To start, grab [SSDT-dGPU-Off.dsl](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/decompiled/SSDT-dGPU-Off.dsl.zip)
+首先，获取 [SSDT-dGPU-Off.dsl](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/decompiled/SSDT-dGPU-Off.dsl.zip)
 
-Next we need to get on Windows, and head to the following:
+接下来，我们需要进入Windows，并前往以下地方:
 
 ```
-Device Manager -> Display Adapters -> dGPU -> Properties -> Details > BIOS device name
+设备管理器—>显示适配器—> dGPU—>属性—>详细信息> BIOS设备名称
 ```
 
-* Note some GPUs may be hiding under "BIOS device name"
+* 注意一些gpu可能隐藏在“BIOS设备名称”下
 
-This should provided you with an ACPI path for your dGPU, most commonly:
+这应该为你的dGPU提供一个ACPI路径，最常见的是:
 
 * Nvidia dGPU: `\_SB.PCI0.PEG0.PEGP`
 * AMD dGPU: `\_SB.PCI0.PEGP.DGFX`
 
 ![Credit to 1Revenger1 for the image](../images/Desktops/nvidia.png)
 
-Now with that, we'll need to change the ACPI path in the SSDT. Main sections:
+现在，我们需要更改SSDT中的ACPI路径。主要部分:
 
 ```
 External(_SB.PCI0.PEG0.PEGP._OFF, MethodObj)
@@ -38,28 +37,28 @@ External(_SB.PCI0.PEG0.PEGP._OFF, MethodObj)
 If (CondRefOf(\_SB.PCI0.PEG0.PEGP._OFF)) { \_SB.PCI0.PEG0.PEGP._OFF() }
 ```
 
-Once adapted to your config, head to the compile section
+一旦适配了您的配置，转到编译部分
 
-* For those with sleep issues, you can refer to the original [Rehabman thread](https://www.tonymacx86.com/threads/guide-disabling-discrete-graphics-in-dual-gpu-laptops.163772/)
+* 有睡眠问题的，可以参考原文[Rehabman帖](https://www.tonymacx86.com/threads/guide-disabling-discrete-graphics-in-dual-gpu-laptops.163772/)
 
-## Bumblebee Method
+## Bumblebee 方法
 
-With some machines, the simple `.off` call won't keep the card off properly, that's where the Bumblebee method comes in. This SSDT will actually send the dGPU into D3 state being the lowest power state a device can support. Credit to Maemo for the original adaptation.
+对于一些机器，简单的`.off`调用不会正确地保持卡关闭，这就是Bumblebee方法的来源。这个SSDT实际上会将dGPU发送到D3状态，即设备可以支持的最低功率状态。感谢Maemo对原著的改编。
 
-To start, grab [SSDT-NoHybGfx.dsl](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/decompiled/SSDT-NoHybGfx.dsl.zip)
+首先，获取 [SSDT-NoHybGfx.dsl](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/decompiled/SSDT-NoHybGfx.dsl.zip)
 
-Next we need to get on Windows, and head to the following:
+接下来，我们需要进入Windows，并前往以下地方:
 
 ```
-Device Manager -> Display Adapters -> dGPU -> Properties -> Details > BIOS device name
+设备管理器—>显示适配器—> dGPU—>属性—>详细信息> BIOS设备名称
 ```
 
-This should provided you with an ACPI path for your dGPU, most commonly:
+这应该会为你的dGPU提供一个ACPI路径，最常见的是:
 
 * Nvidia dGPU: `\_SB.PCI0.PEG0.PEGP`
 * AMD dGPU: `\_SB.PCI0.PEGP.DGFX`
 
-Now with that, we'll need to change the ACPI path in the SSDT. Main sections:
+现在，我们需要更改SSDT中的ACPI路径。主要部分:
 
 ```
 External (_SB_.PCI0.PEG0.PEGP._DSM, MethodObj)    // dGPU ACPI Path
@@ -80,6 +79,6 @@ If ((CondRefOf (\_SB.PCI0.PEG0.PEGP._DSM) && CondRefOf (\_SB.PCI0.PEG0.PEGP._PS3
 \_SB.PCI0.PEG0.PEGP._PS3 ()
 ```
 
-Once adapted to your config, head to the compile section
+一旦适配了您的配置，转到编译部分
 
-## [Now you're ready to compile the SSDT!](/Manual/compile.md)
+## [现在您已经准备好编译SSDT!](/Manual/compile.md)

@@ -1,13 +1,13 @@
-# Fixing Trackpads (SSDT-GPI0/XOSI)
+# 修复触摸板 (SSDT-GPI0/XOSI)
 
-## What this SSDT does
+## 这个SSDT做什么
 
-A big part of fixing I2C trackpads is enabling them within ACPI. For VoodooI2C to work, GPI0 needs to be enabled, as well as the Trackpad and I2C bus. The latter two devices are commonly disabled behind an OS check for Windows which need to be patched to work with macOS as well. Often times, GPI0 is already enabled and requires no modification.
+修复I2C触摸板的一个重要部分是在ACPI中启用它们。要使VoodooI2C工作，需要启用GPI0，以及触控板和I2C总线。后两种设备通常在Windows操作系统检查后被禁用，也需要打补丁才能与macOS一起工作。通常，GPI0已经启用，不需要修改。
 
-This section assumes that macOS is already installed. You may need to use a USB mouse to install macOS if your trackpad does not work yet.
+本节以已安装macOS为例。如果触摸板还不能工作，您可能需要使用USB鼠标来安装macOS。
 
-## Methods to make this SSDT
+## 使其成为SSDT的方法
 
-For the trackpad fix, there are only one method to choose from:
+对于触摸板的修复，只有一个方法可以选择:
 
-* [Manual](/Laptops/trackpad-methods/manual.md)
+* [手动](/Laptops/trackpad-methods/manual.md)

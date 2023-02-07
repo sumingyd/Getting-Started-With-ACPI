@@ -165,7 +165,7 @@ module.exports = {
                     collapsable: true,
                     sidebarDepth: 2,
                     children: [
-                        ['/Laptops/trackpad-methods/manual', '预构建'],
+                        ['/Laptops/trackpad-methods/manual', '手动'],
                     ]
                 },
                 ['/Laptops/laptop-disable', '禁用笔记本dGPUs'],
