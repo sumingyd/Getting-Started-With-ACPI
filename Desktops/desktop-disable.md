@@ -1,53 +1,53 @@
-# Disabling desktops unsupported GPUs(SSDT-GPU-DISABLE)
+# 禁用桌面不支持的gpu (SSDT-GPU-DISABLE)
 
-So this is mainly needed for GPUs that are not supported in macOS, mainly this will be Nvidia users who wish to pair an AMD GPU for macOS use. While WhateverGreen does support the boot-arg `-wegnoegpu`, this only works when running on iGPU so for the rest of us we'll need to make an SSDT.
+所以这主要是在macOS不支持的GPU上需要的，主要是那些希望为macOS使用配对AMD GPU的Nvidia用户。虽然WhateverGreen确实支持引导参数 `-wegnoegpu`，但这只在iGPU上运行时有效，所以对于我们其他人来说，我们需要创建一个SSDT。
 
-So to disable a specific GPU, we need to find a couple things:
+所以要禁用特定的GPU，我们需要找到一些东西:
 
-* ACPI Path of the GPU
+* CPI GPU路径
 * [SSDT-GPU-DISABLE](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/decompiled/SSDT-GPU-DISABLE.dsl.zip)
 
-## Finding the ACPI Path of the GPU
+## 查找GPU的ACPI路径
 
-To find the PCI path of a GPU is fairly simple, best way to find it is running Windows:
+找到GPU的PCI路径是相当简单的，最好的方法是运行Windows:
 
-* Open Device Manager
-* Select Display Adapters, then right click your GPU and select Properties
-* Under the Details Tab, search for "Location Paths"
-  * Note some GPUs may be hiding under "BIOS device name"
+* 打开设备管理器
+* 选择显示适配器，然后右键单击您的GPU并选择属性
+* 在详细资料标签下，搜寻“位置路径”
+  * 注意一些gpu可能隐藏在“BIOS设备名称”下
 
 ![](../images/Desktops/amd.png)
 
 ![Credit to 1Revenger1 for the image](../images/Desktops/nvidia.png)
 
-The second "ACPI" is what we care about:
+第二个“ACPI”是我们关心的:
 
 ```
 ACPI(_SB_)#ACPI(PC02)#ACPI(BR2A)#ACPI(PEGP)#PCI(0000)#PCI(0000)
 ```
 
-Now converting this to an ACPI path is quite simple, remove the `#ACPI` and `#PCI(0000)`:
+现在将其转换为ACPI路径非常简单，删除`#ACPI`和`#PCI(0000)`:
 
 ```
 `_SB_.PC02.BR2A.PEGP
 ```
 
-And voila! We've found our ACPI path, now that we have everything we're ready to get cooking
+瞧!我们已经找到了ACPI路径，现在我们已经准备好了一切
 
-## Making the SSDT
+## 制作SSDT
 
-To start grab our [SSDT-GPU-DISABLE](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/decompiled/SSDT-GPU-DISABLE.dsl.zip) and open it up. Here there's a couple things to change:
+获取我们的 [SSDT-GPU-DISABLE](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/decompiled/SSDT-GPU-DISABLE.dsl.zip)并打开它。这里有几点需要改变:
 
 ```
 External (_SB_.PCI0.PEG0.PEGP, DeviceObj)
 Method (_SB.PCI0.PEG0.PEGP._DSM, 4, NotSerialized)
 ```
 
-For our example, we'll change all mentions of :
+在我们的例子中，我们将更改所有提及的内容:
 
 * `PCI0` with `PC02`
 * `PEG0` with `BR2A`
 
-Hint: If your ACPI path is a bit shorter than the example, this is fine. Just make sure the ACPI paths are correct to your device, some users may also need to adapt `_SB_` to their path
+提示:如果您的ACPI路径比示例短一点，那么这是可以的。只要确保ACPI路径对你的设备是正确的，一些用户可能还需要根据他们的路径调整`_SB_`
 
-## [Now you're ready to compile the SSDT!](/Manual/compile.md)
+## [现在您已经准备好编译SSDT!](/Manual/compile.md)
