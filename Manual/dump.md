@@ -1,46 +1,46 @@
-# Getting a copy of your DSDT
+# 获取你的DSDT副本
 
-So to start, we'll need to get a copy of your DSDT from your firmware. The easiest way is grabbing the DSDT.aml SSDTTime dumped for us earlier but here are some other options:
+首先，我们需要从你的固件中获取一份DSDT的副本。最简单的方法是获取之前SSDTTime为我们转储的DSDT.aml，但这里有一些其他选项:
 
-## From Windows
+## 从Windows
 
 * [SSDTTime](https://github.com/corpnewt/SSDTTime)
-  * Supports both Windows and Linux for DSDT dumping
-  * `8. Dump DSDT - Automatically dump the system DSDT`
+  * 支持Windows和Linux的DSDT转储
+  * `8. Dump DSDT - 自动转储系统DSDT`
 * [acpidump.exe](https://acpica.org/downloads/binary-tools)
-  * In command prompt run `path/to/acpidump.exe -b -n DSDT -z`, this will dump your DSDT as a .dat file. Rename this to DSDT.aml
+  * 在命令提示符中运行 `path/to/acpidump.exe -b -n DSDT -z`, t这将转储您的DSDT为a.dat文件. 将其重命名为DSDT.aml
   
-* Do note that all ACPI patches from clover/OpenCore will be applied to the DSDT with the above 2 methods
+* 请注意，clover/OpenCore的所有ACPI补丁将使用上述2种方法应用于DSDT
   
-## From Linux
+## 从 Linux
 
 * [SSDTTime](https://github.com/corpnewt/SSDTTime)
-  * Supports both Windows and Linux for DSDT dumping
+  * 支持Windows和Linux的DSDT转储
   * `4. Dump DSDT - Automatically dump the system DSDT`
-* Do note that all ACPI patches from clover/OpenCore will be applied to the DSDT with the above method
+* 请注意，clover/OpenCore的所有ACPI补丁将使用上述方法应用于DSDT
 
-## From Clover
+## 从 Clover
 
-For those with Clover installed previously, this is a simple way to get your ACPI tables:
+对于那些之前安装了Clover的用户，这是获取ACPI表的简单方法:
 
-* F4 in Clover Boot menu
-  * DSDT can be found in `EFI/CLOVER/ACPI/origin`, the folder **must** exist before dumping
+* 在Clover Boot菜单中按F4
+  * DSDT可以在`EFI/CLOVER/ACPI/origin`中找到，该文件夹**必须**在转储之前存在
 
-## From OpenCore
+## 从 OpenCore
 
-With OpenCore, we have 2 options:
+对于OpenCore，我们有两个选择:
 
-* [SysReport Quirk](#sysreport-quirk)
+* [SysReport 选项](#sysreport-选项)
 * [UEFI Shell](#uefi-shell)
 
-### SysReport Quirk
+### SysReport 选项
 
-With OpenCore 0.5.9, we have a new quirk called SysReport which will actually dump your DSDT automatically when hitting the boot screen. The main issues are:
+在OpenCore 0.5.9中，我们有了一个叫做SysReport的新功能，它会在进入启动界面时自动转储DSDT。主要问题有:
 
-* You already need a bootable OpenCore USB to get this dump
-* This also requires a DEBUG version of 0.5.9
+* 您已经需要一个可引导的OpenCore USB来获取此转储
+* 这也需要0.5.9的DEBUG版本
 
-For the latter, you just need to replace the following files with [DEBUG version](https://github.com/acidanthera/OpenCorePkg/releases):
+对于后者，您只需要将以下文件替换为[DEBUG版本](https://github.com/acidanthera/OpenCorePkg/releases):
 
 * EFI/BOOT/
   * `BOOTx64.efi`
@@ -51,25 +51,25 @@ For the latter, you just need to replace the following files with [DEBUG version
 * EFI/OC/
   * `OpenCore.efi`
 
-For the former, you can actually skip the ACPI section, return to the [OpenCore guide](https://dortania.github.io/OpenCore-Install-Guide/) and finish making the USB. Once booted to the picker, you can shut off the PC and check your USB:
+对于前者，你可以跳过ACPI部分，返回[OpenCore指南](https://sumingyd.github.io/OpenCore-Install-Guide/) 并完成USB的制作。一旦启动到选择器，您可以关闭PC并检查您的USB:
 
 ![](../images/Manual/dump-md/sysreport.png)
 
-And voila! You have a DSDT! Now you can continue on with making SSDTs
+瞧!你有一个DSDT !现在你可以继续制作ssdt了
 
 ### UEFI Shell
 
-For this, we'll want to grab [`acpidump.efi`](https://github.com/dortania/OpenCore-Install-Guide/tree/master/extra-files/acpidump.efi.zip) and add this to `EFI/OC/Tools` and in your config under `Misc -> Tools` with the argument: `-b -n DSDT -z` and select this option in OpenCore's picker.
+为此，我们要获取 [`acpidump.efi`](https://github.com/dortania/OpenCore-Install-Guide/tree/master/extra-files/acpidump.efi.zip) 并将其添加到`EFI/OC/Tools`和您的配置文件中`Misc -> Tools`下的参数:`-b -n DSDT -z`，并在OpenCore的选择器中选择此选项。
 
-If OpenCore is having issues running acpidump.efi from the boot picker, you can call it from the shell with [OpenShell](https://github.com/acidanthera/OpenCorePkg/releases)(reminder to add to both `EFI/OC/Tools` and in your config under `Misc -> Tools` ):
+如果OpenCore运行acpidump有问题。从启动选择器中，您可以从shell中使用[OpenShell](https://github.com/acidanthera/OpenCorePkg/releases)(重命名添加到`efi /OC/Tools`和在您的配置下的`Misc -> Tools`)调用它:):
 
 ```
-shell> fs0: // replace with proper drive
-fs0:\> dir  // to verify this is the right directory
+shell> fs0: // 替换正确的驱动器
+fs0:\> dir  // 来验证这是正确的目录
    Directory of fs0:\
    01/01/01 3:30p EFI
 fs0:\> cd EFI\OC\Tools
 fs0:\EFI\OC\Tools> acpidump.efi -b -n DSDT -z  
  ```
 
- Once done, you should find your DSDT in the EFI/OC/Tools folder with a `.dat` extension. Rename this DSDT.dat file to DSDT.aml to help us down the line
+ 完成后，您应该在EFI/OC/Tools文件夹中找到DSDT，扩展名为“.dat”。将这个DSDT.dat文件重命名为DSDT.aml，以帮助我们继续下去
