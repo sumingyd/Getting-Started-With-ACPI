@@ -1,371 +1,340 @@
-# Prebuilt SSDTs
+# 预先构建的ssdt
 
-Simply select your hardware type and generation, then download the associated files. Once downloaded, place them in your EFI under EFI/OC/ACPI and head back to [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+只需选择您的硬件类型和生成，然后下载相关文件。下载后，将它们放在EFI下的EFI/OC/ACPI下，然后返回[config.plist 设置](https://sumingyd.github.io/OpenCore-Install-Guide/config.plist/)
 
-* [Intel Desktop SSDTs](#intel-desktop-ssdts)
-  * [Penryn, Lynnfield and Clarkdale](#desktop-penryn-lynnfield-and-clarkdale)
-  * [Sandy and Ivy Bridge](#desktop-sandy-and-ivy-bridge)
-  * [Haswell and Broadwell](#desktop-haswell-and-broadwell)
-  * [Skylake and Kaby Lake](#desktop-skylake-and-kaby-lake)
-  * [Coffee Lake](#desktop-coffee-lake)
-  * [Comet Lake](#desktop-comet-lake)
-* [Intel Laptop SSDTs](#intel-laptop-ssdts)
-  * [Clarksfield and Arrandale](#laptop-clarksfield-and-arrandale)
-  * [Sandy and Ivy Bridge](#laptop-sandy-and-ivy-bridge)
-  * [Haswell and Broadwell](#laptop-haswell-and-broadwell)
-  * [Skylake and Kaby Lake](#laptop-skylake-and-kaby-lake)
-  * Coffee Lake(8th gen)
-  * Coffee and Comet Lake(9th and 10th gen
-  * [Ice Lake](#laptop-ice-lake)
-* [Intel HEDT SSDTs](#intel-hedt-ssdts)
-  * [Nehalem and Westmere](#nehalem-and-westmere)
-  * [Sandy and Ivy Bridge-E](#sandy-and-ivy-bridge-e)
-  * [Haswell and Broadwell-E](#haswell-and-broadwell-e)
-  *[Skylake and Cascade Lake-X/W
-* [AMD SSDTs](#amd-ssdts)
-  * Bulldozer/Jaguar
-  * [Zen](#amd-zen)
+[[toc]]]
 
-## Intel Desktop SSDTs
+### 桌面 Penryn, Lynnfield 和 Clarkdale
 
-* [Penryn, Lynnfield and Clarkdale](#desktop-penryn-lynnfield-and-clarkdale)
-* [Sandy and Ivy Bridge](#desktop-sandy-and-ivy-bridge)
-* [Haswell and Broadwell](#desktop-haswell-and-broadwell)
-* [Skylake and Kaby Lake](#desktop-skylake-and-kaby-lake)
-* [Coffee Lake](#desktop-coffee-lake)
-* [Comet Lake](#desktop-comet-lake)
-
-### Desktop Penryn, Lynnfield and Clarkdale
-
-::: tip SSDTs required
+::: tip 所需的ssds
 
 * [SSDT-EC-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-DESKTOP.aml)
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+下载完成后，将它们放入EFI/OC/ACPI下的EFI文件夹中，然后返回安装指南
 
-* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+* [config.plist 设置](https://sumingyd.github.io/OpenCore-Install-Guide/config.plist/)
 
 :::
 
-::: details In-depth info on the SSDTs
+::: details 关于ssdt的深入信息
 
 SSDT-EC:
 
-* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
+* 用于禁用真正的嵌入式控制器，并创建一个假控制器供macOS使用
 
 :::
 
-### Desktop Sandy and Ivy Bridge
+### 桌面 Sandy 和 Ivy Bridge
 
-::: tip SSDTs required
+::: tip 所需的ssds
 
 * [SSDT-EC-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-DESKTOP.aml)
 * [SSDT-IMEI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-IMEI.aml)
-  * Required for Sandy Bridge CPU with 7 series motherboard
-    * ie. B75, Q75, Z75, H77, Q77, Z77
-  * Required Ivy Bridge CPU with 6 series motherboard
-    * ie. H61, B65, Q65, P67, H67, Q67, Z68
+  * 要求Sandy Bridge CPU与7系列主板
+    * 如 B75, Q75, Z75, H77, Q77, Z77
+  * 要求Ivy Bridge CPU和6系列主板
+    * 如 H61, B65, Q65, P67, H67, Q67, Z68
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+下载完成后，将它们放入EFI/OC/ACPI下的EFI文件夹中，然后返回安装指南
 
-* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+* [config.plist 设置](https://sumingyd.github.io/OpenCore-Install-Guide/config.plist/)
 
 :::
-::: details In-depth info on the SSDTs
+::: details 关于ssdt的深入信息
 
 SSDT-EC:
 
-* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
+* 用于禁用真正的嵌入式控制器，并创建一个假控制器供macOS使用
 
 SSDT-IMEI
 
-* Used for creating an IMEI device when one is not present in ACPI\
-  * Required for Sandy Bridge CPU with 7 series motherboard
-    * ie. B75, Q75, Z75, H77, Q77, Z77
-  * Required Ivy Bridge CPU with 6 series motherboard
-    * ie. H61, B65, Q65, P67, H67, Q67, Z68
+* 当一个IMEI设备不存在于ACPI\时用于创建一个IMEI设备
+  * 要求Sandy Bridge CPU与7系列主板
+    * 如 B75, Q75, Z75, H77, Q77, Z77
+  * 要求Ivy Bridge CPU和6系列主板
+    * 如 H61, B65, Q65, P67, H67, Q67, Z68
 
 :::
 
-### Desktop Haswell and Broadwell
+### 桌面 Haswell 和 Broadwell
 
-::: tip SSDTs required
+::: tip 所需的ssds
 
 * [SSDT-PLUG-DRTNIA](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PLUG-DRTNIA.aml)
 * [SSDT-EC-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-DESKTOP.aml)
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+下载完成后，将它们放入EFI/OC/ACPI下的EFI文件夹中，然后返回安装指南
 
-* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+* [config.plist 设置](https://sumingyd.github.io/OpenCore-Install-Guide/config.plist/)
 
 :::
 
-::: details In-depth info on the SSDTs
+::: details 关于ssdt的深入信息
 
 SSDT-PLUG:
 
-* Used for enabling Apple's XCPM in macOS, allowing for far better CPU power management
+* 用于在macOS中启用苹果的XCPM，允许更好的CPU电源管理
 
 SSDT-EC:
 
-* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
+* 用于禁用真正的嵌入式控制器，并创建一个假控制器供macOS使用
 
 :::
 
-### Desktop Skylake and Kaby Lake
+### 桌面 Skylake 和 Kaby Lake
 
-::: tip SSDTs required
+::: tip 所需的ssds
 
 * [SSDT-PLUG-DRTNIA](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PLUG-DRTNIA.aml)
 * [SSDT-EC-USBX-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-USBX-DESKTOP.aml)
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+下载完成后，将它们放入EFI/OC/ACPI下的EFI文件夹中，然后返回安装指南
 
-* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+* [config.plist 设置](https://sumingyd.github.io/OpenCore-Install-Guide/config.plist/)
 
 :::
 
-::: details In-depth info on the SSDTs
+::: details 关于ssdt的深入信息
 
 SSDT-PLUG:
 
-* Used for enabling Apple's XCPM in macOS, allowing for far better CPU power management
+* 用于在macOS中启用苹果的XCPM，允许更好的CPU电源管理
 
 SSDT-EC-USBX:
 
-* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
-* USBX portion is used for injection USB power properties missing on Skylake and newer
+* 用于禁用真正的嵌入式控制器，并创建一个假控制器供macOS使用
+* USBX部分用于注入Skylake和更新的USB电源属性
 
 :::
 
-### Desktop Coffee Lake
+### 桌面 Coffee Lake
 
-::: tip SSDTs required
+::: tip 所需的ssds
 
 * [SSDT-PLUG-DRTNIA](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PLUG-DRTNIA.aml)
 * [SSDT-EC-USBX-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-USBX-DESKTOP.aml)
 * [SSDT-AWAC](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-AWAC.aml)
 * [SSDT-PMC](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PMC.aml)
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+下载完成后，将它们放入EFI/OC/ACPI下的EFI文件夹中，然后返回安装指南
 
-* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+* [config.plist 设置](https://sumingyd.github.io/OpenCore-Install-Guide/config.plist/)
 
 :::
 
-::: details In-depth info on the SSDTs
+::: details 关于ssdt的深入信息
 
 SSDT-PLUG:
 
-* Used for enabling Apple's XCPM in macOS, allowing for far better CPU power management
+* 用于在macOS中启用苹果的XCPM，允许更好的CPU电源管理
 
 SSDT-EC-USBX:
 
-* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
-* USBX portion is used for injection USB power properties missing on Skylake and newer
+* 用于禁用真正的嵌入式控制器，并创建一个假控制器供macOS使用
+* USBX部分用于注入Skylake和更新的USB电源属性
 
 SSDT-AWAC:
 
-* Used to enable the legacy RTC clock in macOS, as the newer AWAC clock is unsupported
+* 用于启用macOS中的传统RTC时钟，因为不支持更新的AWAC时钟
 
 SSDT-PMC:
 
-* Used to enable native NVRAM on "true" 300 series motherboards
-  * ie. B360, B365, H310, H370, Z390
-  * Note Z370 is not included
+* 用于在“真正的”300系列主板上启用原生NVRAM
+  * 如 B360, B365, H310, H370, Z390
+  * 注:Z370不包括在内
 
 :::
 
-### Desktop Comet Lake
+### 桌面 Comet Lake
 
-::: tip SSDTs required
+::: tip 所需的ssds
 
 * [SSDT-PLUG-DRTNIA](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PLUG-DRTNIA.aml)
 * [SSDT-EC-USBX-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-USBX-DESKTOP.aml)
 * [SSDT-AWAC](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-AWAC.aml)
 * [SSDT-RHUB](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-RHUB.aml)
-  * Specifically for Asus's 400 series motherboards, Gigabyte and others do not need SSDT-RHUB
+  * 特别是对于华硕的400系列主板，Gigabyte等不需要SSDT-RHUB
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+下载完成后，将它们放入EFI/OC/ACPI下的EFI文件夹中，然后返回安装指南
 
-* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+* [config.plist 设置](https://sumingyd.github.io/OpenCore-Install-Guide/config.plist/)
 
 :::
 
-::: details In-depth info on the SSDTs
+::: details 关于ssdt的深入信息
 
 SSDT-PLUG:
 
-* Used for enabling Apple's XCPM in macOS, allowing for far better CPU power management
+* 用于在macOS中启用苹果的XCPM，允许更好的CPU电源管理
 
 SSDT-EC-USBX:
 
-* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
-* USBX portion is used for injection USB power properties missing on Skylake and newer
+* 用于禁用真正的嵌入式控制器，并创建一个假控制器供macOS使用
+* USBX部分用于注入Skylake和更新的USB电源属性
 
 SSDT-AWAC:
 
-* Used to enable the legacy RTC clock in macOS, as the newer AWAC clock is unsupported
+* 用于启用macOS中的传统RTC时钟，因为不支持更新的AWAC时钟
 
 SSDT-RHUB:
 
-* Used to reset USB controllers on Asus's 400 series motherboards due to poor ACPI implementation from the OEM
-  * Note Gigabyte, MSI, AsRock, etc do not need this SSDT. Only Asus
+* 由于OEM的ACPI实现不佳，用于重置华硕400系列主板上的USB控制器
+  * 注:Gigabyte, MSI, AsRock等不需要这个SSDT。只有华硕
 
 :::
 
-## Intel Laptop SSDTs
+## Intel 笔记本 SSDTs
 
-### Laptop Clarksfield and Arrandale
+### 笔记本 Clarksfield 和 Arrandale
 
-::: tip SSDTs required
+::: tip 所需的ssds
 
 * [SSDT-EC-LAPTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-LAPTOP.aml)
 * [SSDT-PNLF](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PNLF.aml)
 * [SSDT-XOSI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-XOSI.aml)
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+下载完成后，将它们放入EFI/OC/ACPI下的EFI文件夹中，然后返回安装指南
 
-* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+* [config.plist 设置](https://sumingyd.github.io/OpenCore-Install-Guide/config.plist/)
 
 :::
 
-::: details In-depth info on the SSDTs
+::: details 关于ssdt的深入信息
 
 SSDT-EC:
 
-* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
+* 用于禁用真正的嵌入式控制器，并创建一个假控制器供macOS使用
 
 SSDT-PNLF:
 
-* Used for controlling the backlight on internal displays such as AIOs and laptops
+* 用于控制AIOs、笔记本电脑等内部显示器的背光
 
 SSDT-XOSI:
 
-* Enables many Windows-only functionality in macOS
-  * Requires XOSI patch(covered later on)
+* 在macOS中启用许多windows专用功能
+  * 需要XOSI补丁(稍后介绍)
 
 :::
 
-### Laptop Sandy and Ivy Bridge
+### 笔记本 Sandy 和 Ivy Bridge
 
-::: tip SSDTs required
+::: tip 所需的ssds
 
 * [SSDT-EC-LAPTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-LAPTOP.aml)
 * [SSDT-IMEI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-IMEI.aml)
-  * Required for Sandy Bridge CPU with 7 series motherboard
-    * ie. B75, Q75, Z75, H77, Q77, Z77
-  * Required Ivy Bridge CPU with 6 series motherboard
-    * ie. H61, B65, Q65, P67, H67, Q67, Z68
+  * 要求Sandy Bridge CPU与7系列主板
+    * 如 B75, Q75, Z75, H77, Q77, Z77
+  * 要求Ivy Bridge CPU和6系列主板
+    * 如 H61, B65, Q65, P67, H67, Q67, Z68
 * [SSDT-PNLF](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PNLF.aml)
 * [SSDT-XOSI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-XOSI.aml)
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+下载完成后，将它们放入EFI/OC/ACPI下的EFI文件夹中，然后返回安装指南
 
-* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+* [config.plist 设置](https://sumingyd.github.io/OpenCore-Install-Guide/config.plist/)
 
 :::
-::: details In-depth info on the SSDTs
+::: details 关于ssdt的深入信息
 
 SSDT-EC:
 
-* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
+* 用于禁用真正的嵌入式控制器，并创建一个假控制器供macOS使用
 
 SSDT-IMEI
 
-* Used for creating an IMEI device when one is not present in ACPI
-  * Required for Sandy Bridge CPU with 7 series motherboard
-    * ie. B75, Q75, Z75, H77, Q77, Z77
-  * Required Ivy Bridge CPU with 6 series motherboard
-    * ie. H61, B65, Q65, P67, H67, Q67, Z68
+* 当ACPI中没有IMEI设备时，用于创建IMEI设备
+  * 要求Sandy Bridge CPU与7系列主板
+    * 如 B75, Q75, Z75, H77, Q77, Z77
+  * 要求Ivy Bridge CPU和6系列主板
+    * 如 H61, B65, Q65, P67, H67, Q67, Z68
 
 SSDT-PNLF:
 
-* Used for controlling the backlight on internal displays such as AIOs and laptops
+* 用于控制AIOs、笔记本电脑等内部显示器的背光
 
 SSDT-XOSI:
 
-* Enables many Windows-only functionality in macOS
-  * Requires XOSI patch(covered later on)
+* 在macOS中启用许多windows专用功能
+  * 需要XOSI补丁(稍后介绍)
 
 :::
 
-### Laptop Haswell and Broadwell
+### 笔记本 Haswell 和 Broadwell
 
-::: tip SSDTs required
+::: tip 所需的ssds
 
 * [SSDT-PLUG-DRTNIA](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PLUG-DRTNIA.aml)
 * [SSDT-EC-LAPTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-LAPTOP.aml)
 * [SSDT-PNLF](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PNLF.aml)
 * [SSDT-XOSI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-XOSI.aml)
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+下载完成后，将它们放入EFI/OC/ACPI下的EFI文件夹中，然后返回安装指南
 
-* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+* [config.plist 设置](https://sumingyd.github.io/OpenCore-Install-Guide/config.plist/)
 
 :::
 
-::: details In-depth info on the SSDTs
+::: details 关于ssdt的深入信息
 
 SSDT-PLUG:
 
-* Used for enabling Apple's XCPM in macOS, allowing for far better CPU power management
+* 用于在macOS中启用苹果的XCPM，允许更好的CPU电源管理
 
 SSDT-EC:
 
-* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
+* 用于禁用真正的嵌入式控制器，并创建一个假控制器供macOS使用
 
 SSDT-PNLF:
 
-* Used for controlling the backlight on internal displays such as AIOs and laptops
+* 用于控制AIOs、笔记本电脑等内部显示器的背光
 
 SSDT-XOSI:
 
-* Enables many Windows-only functionality in macOS
-  * Requires XOSI patch(covered later on)
+* 在macOS中启用许多windows专用功能
+  * 需要XOSI补丁(稍后介绍)
 
 :::
 
-### Laptop Skylake and Kaby Lake
+### 笔记本 Skylake 和 Kaby Lake
 
-::: tip SSDTs required
+::: tip 所需的ssds
 
 * [SSDT-PLUG-DRTNIA](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PLUG-DRTNIA.aml)
 * [SSDT-EC-USBX-LAPTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-USBX-LAPTOP.aml)
 * [SSDT-PNLF](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PNLF.aml)
 * [SSDT-XOSI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-XOSI.aml)
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+下载完成后，将它们放入EFI/OC/ACPI下的EFI文件夹中，然后返回安装指南
 
-* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+* [config.plist 设置](https://sumingyd.github.io/OpenCore-Install-Guide/config.plist/)
 
 :::
 
-::: details In-depth info on the SSDTs
+::: details 关于ssdt的深入信息
 
 SSDT-PLUG:
 
-* Used for enabling Apple's XCPM in macOS, allowing for far better CPU power management
+* 用于在macOS中启用苹果的XCPM，允许更好的CPU电源管理
 
 SSDT-EC-USBX:
 
-* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
-* USBX portion is used for injection USB power properties missing on Skylake and newer
+* 用于禁用真正的嵌入式控制器，并创建一个假控制器供macOS使用
+* USBX部分用于注入Skylake和更新的USB电源属性
 
 SSDT-PNLF:
 
-* Used for controlling the backlight on internal displays such as AIOs and laptops
+* 用于控制AIOs、笔记本电脑等内部显示器的背光
 
 SSDT-XOSI:
 
-* Enables many Windows-only functionality in macOS
-  * Requires XOSI patch(covered later on)
+* 在macOS中启用许多windows专用功能
+  * 需要XOSI补丁(稍后介绍)
 
 :::
 
-### Laptop Coffee Lake(8th gen)
+### 笔记本 Coffee Lake(8th gen)
 
-::: tip SSDTs required
+::: tip 所需的ssds
 
 * [SSDT-PLUG-DRTNIA](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PLUG-DRTNIA.aml)
 * [SSDT-EC-USBX-LAPTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-USBX-LAPTOP.aml)
@@ -373,90 +342,90 @@ SSDT-XOSI:
 * [SSDT-PNLF](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PNLF.aml)
 * [SSDT-XOSI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-XOSI.aml)
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+下载完成后，将它们放入EFI/OC/ACPI下的EFI文件夹中，然后返回安装指南
 
-* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+* [config.plist 设置](https://sumingyd.github.io/OpenCore-Install-Guide/config.plist/)
 
 :::
 
-::: details In-depth info on the SSDTs
+::: details 关于ssdt的深入信息
 
 SSDT-PLUG:
 
-* Used for enabling Apple's XCPM in macOS, allowing for far better CPU power management
+* 用于在macOS中启用苹果的XCPM，允许更好的CPU电源管理
 
 SSDT-EC-USBX:
 
-* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
-* USBX portion is used for injection USB power properties missing on Skylake and newer
+* 用于禁用真正的嵌入式控制器，并创建一个假控制器供macOS使用
+* USBX部分用于注入Skylake和更新的USB电源属性
 
 SSDT-AWAC:
 
-* Used to enable the legacy RTC clock in macOS, as the newer AWAC clock is unsupported
+* 用于启用macOS中的传统RTC时钟，因为不支持更新的AWAC时钟
 
 SSDT-PNLF:
 
-* Used for controlling the backlight on internal displays such as AIOs and laptops
+* 用于控制AIOs、笔记本电脑等内部显示器的背光
 
 SSDT-XOSI:
 
-* Enables many Windows-only functionality in macOS
-  * Requires XOSI patch(covered later on)
+* 在macOS中启用许多windows专用功能
+  * 需要XOSI补丁(稍后介绍)
 
 :::
 
-### Laptop Coffee and Comet Lake(9th and 10th gen)
+### 笔记本 Coffee 和 Comet Lake(9th and 10th gen)
 
-::: tip SSDTs required
+::: tip 所需的ssds
 
 * [SSDT-PLUG-DRTNIA](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PLUG-DRTNIA.aml)
 * [SSDT-EC-USBX-LAPTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-USBX-LAPTOP.aml)
 * [SSDT-AWAC](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-AWAC.aml)
 * [SSDT-PMC](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PMC.aml)
-  * Only for 9th gen laptops, 10th gen can ignore
+  * 仅适用于第9代笔记本电脑, 10th gen can ignore
 * [SSDT-PNLF](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PNLF.aml)
 * [SSDT-XOSI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-XOSI.aml)
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+下载完成后，将它们放入EFI/OC/ACPI下的EFI文件夹中，然后返回安装指南
 
-* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+* [config.plist 设置](https://sumingyd.github.io/OpenCore-Install-Guide/config.plist/)
 
 :::
 
-::: details In-depth info on the SSDTs
+::: details 关于ssdt的深入信息
 
 SSDT-PLUG:
 
-* Used for enabling Apple's XCPM in macOS, allowing for far better CPU power management
+* 用于在macOS中启用苹果的XCPM，允许更好的CPU电源管理
 
 SSDT-EC-USBX:
 
-* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
-* USBX portion is used for injection USB power properties missing on Skylake and newer
+* 用于禁用真正的嵌入式控制器，并创建一个假控制器供macOS使用
+* USBX部分用于注入Skylake和更新的USB电源属性
 
 SSDT-AWAC:
 
-* Used to enable the legacy RTC clock in macOS, as the newer AWAC clock is unsupported
+* 用于启用macOS中的传统RTC时钟，因为不支持更新的AWAC时钟
 
 SSDT-PMC:
 
-* Used to enable native NVRAM on "true" 300 series motherboards
-  * Only for 9th gen laptops
+* 用于在“真正的”300系列主板上启用原生NVRAM
+  * 仅适用于第9代笔记本电脑
   
 SSDT-PNLF:
 
-* Used for controlling the backlight on internal displays such as AIOs and laptops
+* 用于控制AIOs、笔记本电脑等内部显示器的背光
 
 SSDT-XOSI:
 
-* Enables many Windows-only functionality in macOS
-  * Requires XOSI patch(covered later on)
+* 在macOS中启用许多windows专用功能
+  * 需要XOSI补丁(稍后介绍)
 
 :::
 
-### Laptop Ice Lake
+### 笔记本 Ice Lake
 
-::: tip SSDTs required
+::: tip 所需的ssds
 
 * [SSDT-PLUG-DRTNIA](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PLUG-DRTNIA.aml)
 * [SSDT-EC-USBX-LAPTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-USBX-LAPTOP.aml)
@@ -465,156 +434,156 @@ SSDT-XOSI:
 * [SSDT-PNLF](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PNLF.aml)
 * [SSDT-XOSI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-XOSI.aml)
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+下载完成后，将它们放入EFI/OC/ACPI下的EFI文件夹中，然后返回安装指南
 
-* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+* [config.plist 设置](https://sumingyd.github.io/OpenCore-Install-Guide/config.plist/)
 
 :::
 
-::: details In-depth info on the SSDTs
+::: details 关于ssdt的深入信息
 
 SSDT-PLUG:
 
-* Used for enabling Apple's XCPM in macOS, allowing for far better CPU power management
+* 用于在macOS中启用苹果的XCPM，允许更好的CPU电源管理
 
 SSDT-EC-USBX:
 
-* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
-* USBX portion is used for injection USB power properties missing on Skylake and newer
+* 用于禁用真正的嵌入式控制器，并创建一个假控制器供macOS使用
+* USBX部分用于注入Skylake和更新的USB电源属性
 
 SSDT-AWAC:
 
-* Used to enable the legacy RTC clock in macOS, as the newer AWAC clock is unsupported
+* 用于启用macOS中的传统RTC时钟，因为不支持更新的AWAC时钟
 
 SSDT-RHUB:
 
-* Used to reset USB controllers on Ice Lake laptops due to poor OEM ACPI implementation
-  * Mainly seen on Dell laptops
+* 由于OEM ACPI实现不佳，用于重置Ice Lake笔记本电脑上的USB控制器
+  * 主要出现在戴尔笔记本电脑上
   
 SSDT-PNLF:
 
-* Used for controlling the backlight on internal displays such as AIOs and laptops
+* 用于控制AIOs、笔记本电脑等内部显示器的背光
 
 SSDT-XOSI:
 
-* Enables many Windows-only functionality in macOS
-  * Requires XOSI patch(covered later on)
+* 在macOS中启用许多windows专用功能
+  * 需要XOSI补丁(稍后介绍)
 
 :::
 
 ## Intel HEDT SSDTs
 
-### Nehalem and Westmere
+### Nehalem 和 Westmere
 
-::: tip SSDTs required
+::: tip 所需的ssds
 
 * [SSDT-EC-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-DESKTOP.aml)
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+下载完成后，将它们放入EFI/OC/ACPI下的EFI文件夹中，然后返回安装指南
 
-* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+* [config.plist 设置](https://sumingyd.github.io/OpenCore-Install-Guide/config.plist/)
 
 :::
 
-::: details In-depth info on the SSDTs
+::: details 关于ssdt的深入信息
 
 SSDT-EC:
 
-* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
+* 用于禁用真正的嵌入式控制器，并创建一个假控制器供macOS使用
 
 :::
 
-### Sandy and Ivy Bridge-E
+### Sandy 和 Ivy Bridge-E
 
-::: tip SSDTs required
+::: tip 所需的ssds
 
 * [SSDT-EC-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-DESKTOP.aml)
 * [SSDT-UNC](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-UNC.aml)
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+下载完成后，将它们放入EFI/OC/ACPI下的EFI文件夹中，然后返回安装指南
 
-* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+* [config.plist 设置](https://sumingyd.github.io/OpenCore-Install-Guide/config.plist/)
 
 :::
 
-::: details In-depth info on the SSDTs
+::: details 关于ssdt的深入信息
 
 SSDT-EC:
 
-* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
+* 用于禁用真正的嵌入式控制器，并创建一个假控制器供macOS使用
 
 SSDT-UNC0:
 
-* Used to ensure unused or missing uncore bridges are properly disabled, otherwise kernel panic in IOPCIFamily in macOS Big Sur
+* 用于确保未使用或丢失的uncore桥正确禁用，否则在macOS Big Sur的IOPCIFamily中发生内核恐慌
 
 :::
 
-### Haswell and Broadwell-E
+### Haswell 和 Broadwell-E
 
-::: tip SSDTs required
+::: tip 所需的ssds
 
 * [SSDT-PLUG-DRTNIA](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PLUG-DRTNIA.aml)
 * [SSDT-EC-USBX-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-USBX-DESKTOP.aml)
 * [SSDT-RTC0-RANGE-HEDT](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-RTC0-RANGE-HEDT.aml)
 * [SSDT-UNC](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-UNC.aml)
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+下载完成后，将它们放入EFI/OC/ACPI下的EFI文件夹中，然后返回安装指南
 
-* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+* [config.plist 设置](https://sumingyd.github.io/OpenCore-Install-Guide/config.plist/)
 
 :::
 
-::: details In-depth info on the SSDTs
+::: details 关于ssdt的深入信息
 
 SSDT-PLUG:
 
-* Used for enabling Apple's XCPM in macOS, allowing for far better CPU power management
+* 用于在macOS中启用苹果的XCPM，允许更好的CPU电源管理
 
 SSDT-EC-USBX:
 
-* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
-* USBX portion is used for injection USB power properties missing on Skylake and newer
+* 用于禁用真正的嵌入式控制器，并创建一个假控制器供macOS使用
+* USBX部分用于注入Skylake和更新的USB电源属性
 
 SSDT-RTC0-RANGE-HEDT:
 
-* Used to enable the legacy RTC clock in macOS, as the newer AWAC clock is unsupported
-  * Added benefit is to resolve early halts in macOS Big Sur's booting due to poor ACPI implementation
+* 用于启用macOS中的传统RTC时钟，因为不支持更新的AWAC时钟
+  * 额外的好处是解决了macOS Big Sur启动时由于ACPI实现不佳而出现的早期停顿
 
 SSDT-UNC0:
 
-* Used to ensure unused or missing uncore bridges are properly disabled, otherwise kernel panic in IOPCIFamily in macOS Big Sur
+* 用于确保未使用或丢失的uncore桥正确禁用，否则在macOS Big Sur的IOPCIFamily中发生内核恐慌
 
 :::
 
-### Skylake and Cascade Lake-X/W
+### Skylake 和 Cascade Lake-X/W
 
-::: tip SSDTs required
+::: tip 所需的ssds
 
 * [SSDT-PLUG-DRTNIA](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PLUG-DRTNIA.aml)
 * [SSDT-EC-USBX-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-USBX-DESKTOP.aml)
 * [SSDT-RTC0-RANGE-HEDT](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-RTC0-RANGE-HEDT.aml)
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+下载完成后，将它们放入EFI/OC/ACPI下的EFI文件夹中，然后返回安装指南
 
-* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+* [config.plist 设置](https://sumingyd.github.io/OpenCore-Install-Guide/config.plist/)
 
 :::
 
-::: details In-depth info on the SSDTs
+::: details 关于ssdt的深入信息
 
 SSDT-PLUG:
 
-* Used for enabling Apple's XCPM in macOS, allowing for far better CPU power management
+* 用于在macOS中启用苹果的XCPM，允许更好的CPU电源管理
 
 SSDT-EC-USBX:
 
-* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
-* USBX portion is used for injection USB power properties missing on Skylake and newer
+* 用于禁用真正的嵌入式控制器，并创建一个假控制器供macOS使用
+* USBX部分用于注入Skylake和更新的USB电源属性
 
 SSDT-RTC0-RANGE-HEDT:
 
-* Used to enable the legacy RTC clock in macOS, as the newer AWAC clock is unsupported
-  * Added benefit is to resolve early halts in macOS Big Sur's booting due to poor ACPI implementation
+* 用于启用macOS中的传统RTC时钟，因为不支持更新的AWAC时钟
+  * 额外的好处是解决了macOS Big Sur启动时由于ACPI实现不佳而出现的早期停顿
 
 :::
 
@@ -622,50 +591,50 @@ SSDT-RTC0-RANGE-HEDT:
 
 ### AMD Bulldozer/Jaguar
 
-::: tip SSDTs required
+::: tip 所需的ssds
 
 * [SSDT-EC-USBX-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-USBX-DESKTOP.aml)
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+下载完成后，将它们放入EFI/OC/ACPI下的EFI文件夹中，然后返回安装指南
 
-* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+* [config.plist 设置](https://sumingyd.github.io/OpenCore-Install-Guide/config.plist/)
 
 :::
 
-::: details In-depth info on the SSDTs
+::: details 关于ssdt的深入信息
 
 SSDT-EC-USBX:
 
-* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
-* USBX portion is used for injection USB power properties missing on Skylake and newer
+* 用于禁用真正的嵌入式控制器，并创建一个假控制器供macOS使用
+* USBX部分用于注入Skylake和更新的USB电源属性
 
 :::
 
 ### AMD Zen
 
-::: tip SSDTs required
+::: tip 所需的ssds
 
 * [SSDT-EC-USBX-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-USBX-DESKTOP.aml)
 * [SSDT-CPUR](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-CPUR.aml)
-  * Only required for B550, A520 and newer
-    * X570 and older **DO NOT** need SSDT-CPUR
-    * No threadripper machines need this either
+  * 只适用于B550, A520及更新型号
+    * X570及以上版本**不**需要 SSDT-CPUR
+    * 没有threadripper机器也需要这个
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+下载完成后，将它们放入EFI/OC/ACPI下的EFI文件夹中，然后返回安装指南
 
-* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+* [config.plist 设置](https://sumingyd.github.io/OpenCore-Install-Guide/config.plist/)
 
 :::
 
-::: details In-depth info on the SSDTs
+::: details 关于ssdt的深入信息
 
 SSDT-EC-USBX:
 
-* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
-* USBX portion is used for injection USB power properties missing on Skylake and newer
+* 用于禁用真正的嵌入式控制器，并创建一个假控制器供macOS使用
+* USBX部分用于注入Skylake和更新的USB电源属性
 
 SSDT-CPUR:
 
-* Used for fixing CPU definitions in ACPI, as macOS does not properly support the ACPI used in B550 and newer boards
+* 用于修复ACPI中的CPU定义，因为macOS不能正确支持B550和较新的电路板中使用的ACPI
 
 :::
