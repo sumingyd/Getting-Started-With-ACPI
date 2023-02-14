@@ -1,15 +1,15 @@
-# Fixing Uncore Bridges: Manual
+# 修复非核心桥：手动
 
-## Download the SSDT
+## 下载SSDT
 
-Super simple, just grab the SSDT and compile:
+超级简单，只需抓取SSDT并进行编译：
 
 * [SSDT-UNC.dsl](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-UNC.dsl)
 
-See here how to compile: [Compiling ACPI](/Manual/compile.md)
+请看这里如何编译[编译ACPI](/Manual/compile.md)
 
-## Wrapping up
+## 总结
 
-Once you're done making your SSDT, either head to the next page to finish the rest of the SSDTs or head here if you're ready to wrap up:
+一旦你完成了你的SSDT的制作，可以前往下一页完成其余的SSDT，或者如果你准备结束的话，可以前往这里：
 
-* [**Cleanup**](/cleanup.md)
+* [**清理工作**](/cleanup.md)

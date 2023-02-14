@@ -1,22 +1,22 @@
-# Fixing System Clocks: Prebuilt
+# 修复系统时钟：预构建
 
-By far the easiest method, all you need to do is download the following file:
+到目前为止，这是最简单的方法，你所需要做的就是下载以下文件。
 
 * [SSDT-AWAC.aml](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-AWAC.aml)
-  * For most users
-* [SSDT-RTC0-RANGE-HEDT](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-RTC0-RANGE-HEDT.aml)
-  * For Intel's X99 and X299 platforms
+  * 对于大多数用户来说
+* [sdt-rtc0-range-hedt](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-RTC0-RANGE-HEDT.aml)
+  * 适用于英特尔的X99和X299平台
 
-Main things to note with this method:
+这个方法需要注意的主要事项。
 
-* Assumes you both have an AWAC clock and it can be easily turned off with the RTC replacing it, **this may not always work**
-  * This only applies to SSDT-AWAC
-  * SSDT-RTC0-RANGE instead relies on known RTC names, and can only handle so many edge cases
-* Doesn't really teach you anything
-  * For most, this doesn't matter. But to some knowing what makes your hackintosh tick is part of the journey
+* 假设你们都有一个AWAC时钟，并且可以用RTC代替它轻松关闭，**这不一定能成功**。
+  * 这只适用于SSDT-AWAC
+  * SSDT-RTC0-RANGE依赖于已知的RTC名称，并且只能处理这么多边缘情况。
+* 并没有真正教你什么
+  * 对于大多数人来说，这并不重要。但对某些人来说，知道是什么让你的黑客机嘀嘀作响是旅程的一部分。
 
-## Wrapping up
+## 总结
 
-Once you're done making your SSDT, either head to the next page to finish the rest of the SSDTs or head here if you're ready to wrap up:
+一旦你完成了你的SSDT的制作，可以前往下一页完成其余的SSDT，或者如果你准备结束的话，可以前往这里：
 
-* [**Cleanup**](/cleanup.md)
+* [**清理工作**](/cleanup.md)

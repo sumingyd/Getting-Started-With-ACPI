@@ -1,37 +1,33 @@
-# Fixing IMEI: Manual
+# 修复IMEI：手动
 
-* [Finding the ACPI device](#finding-the-acpi-device)
-* [Compiling the SSDT](#compiling-the-ssdt)
-* [Wrapping up](#wrapping-up)
+## 寻找ACPI设备
 
-## Finding the ACPI device
+寻找ACPI设备的路径其实很容易，首先用MaciASL（如果在macOS中）或任何其他文本编辑器（如果在Windows或Linux中）打开你从[Dumping the DSDT](/Manual/dump.md)和[Decompiling and Compiling](/Manual/compile.md)得到的反编译的DSDT（VSCode有一个[ACPI扩展](https://marketplace.visualstudio.com/items?itemName=Thog.vscode-asl)，也能帮助你。
 
-Finding the ACPI pathing is quite easy actually, first open your decompiled DSDT you got from [Dumping the DSDT](/Manual/dump.md) and [Decompiling and Compiling](/Manual/compile.md) with either MaciASL(if in macOS) or any other text editor if in Windows or Linux(VSCode has an [ACPI extension](https://marketplace.visualstudio.com/items?itemName=Thog.vscode-asl) that can also help).
-
-Next, search for the following devices:
+接下来，搜索以下设备。
 
 * `IMEI`
 * `HECI`
 * `MEI`
 
-If none of the 3 show up, you'll need to create an SSDT-IMEI.
+如果这三个都没有出现，你就需要创建一个SSDT-IMEI。
 
-**If one of these 3 devices show up**, you do not need SSDT-IMEI! You can simply skip this page.
+**如果这三种设备之一出现**，你不需要SSDT-IMEI! 你可以直接跳过这一页。
 
-The rest of this page will however assume none of those 3 devices showed up.
+然而，本页面的其余部分将假设这3个设备都没有出现。
 
-## Compiling the SSDT
+## 编译SSDT
 
-So there's actually no edits required to SSDT-IMEI, you can either grab the source code and compile yourself or use the prebuilt
+因此，实际上不需要对SSDT-IMEI进行编辑，你可以抓取源代码并自己编译，或者使用预建的
 
-* [Prebuilt SSDT-IMEI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-IMEI-S.aml)
+* [预构建SSDT-IMEI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-IMEI-S.aml)
 
-* [SSDT-IMEI's source code](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-IMEI.dsl)
+* [SSDT-IMEI的源代码](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-IMEI.dsl)
 
-With the SSDT done, you're now [ready to compile the SSDT!](/Manual/compile.md)
+随着SSDT的完成，你现在[准备编译SSDT！](/Manual/compile.md)
 
-## Wrapping up
+## 总结
 
-Once you're done making your SSDT, either head to the next page to finish the rest of the SSDTs or head here if you're ready to wrap up:
+一旦你完成了你的SSDT的制作，可以前往下一页完成其余的SSDT，或者如果你准备结束的话，可以前往这里：
 
-* [**Cleanup**](/cleanup.md)
+* [**清理工作**](/cleanup.md)

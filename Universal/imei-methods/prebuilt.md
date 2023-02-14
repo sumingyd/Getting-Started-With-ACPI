@@ -1,11 +1,11 @@
-# Fixing IMEI: Prebuilt
+# 修复IMEI：预构建
 
-By far the easiest method, all you need to do is download the following file:
+到目前为止，这是最简单的方法，你所需要做的就是下载以下文件。
 
 * [SSDT-IMEI.aml](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-IMEI.aml)
 
-## Wrapping up
+## 总结
 
-Once you're done making your SSDT, either head to the next page to finish the rest of the SSDTs or head here if you're ready to wrap up:
+一旦你完成了你的SSDT的制作，可以前往下一页完成其余的SSDT，或者如果你准备结束的话，可以前往这里：
 
-* [**Cleanup**](/cleanup.md)
+* [**清理工作**](/cleanup.md)

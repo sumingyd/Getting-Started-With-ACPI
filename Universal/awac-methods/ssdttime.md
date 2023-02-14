@@ -1,22 +1,22 @@
-# Fixing System Clocks (SSDT-AWAC/RTC0)
+# 修复系统时钟 (SSDT-AWAC/RTC0)
 
-* **Reminder**: Does not support HEDT(ie. X99 and X299)
+**提醒**：不支持HEDT（即X99和X299）。
 
-The second involves using SSDTTime which automates most of the process. See here on how to use it: [SSDTs: Easy Way](/ssdt-methods/ssdt-easy.md)
+第二种方法是使用SSDTTime，它可以自动完成大部分的过程。关于如何使用它，请看这里。[SSDTs: Easy Way](/ssdt-methods/ssdt-easy.md)
 
-To get the SSDT-PMC, run the following:
+要获得SSDT-PMC，请运行以下程序。
 
-* `7. Dump DSDT` then run `6. AWAC`
+* `7. Dump DSDT`然后运行`6. AWAC`。
 
-This will provide you with some files, the main one you care about is SSDT-AWAC.**aml**. or SSDT-RTC0.**aml**. The DSDT and .dsl are only left for referencing or verification.
+这将为你提供一些文件，你关心的主要文件是SSDT-AWAC.**aml*.或SSDT-RTC0.**aml*. DSDT和.dsl只留作参考或验证。
 
-The main things to note with this method:
+这种方法需要注意的主要事项。
 
-* Doesn't really teach you anything
-  * For most, this doesn't matter. But to some knowing what makes your hackintosh tick is part of the journey
+* 并没有真正教你什么
+  * 对于大多数人来说，这并不重要。但对某些人来说，知道是什么让你的黑客机嘀嘀作响是旅程的一部分。
 
-## Wrapping up
+## 总结
 
-Once you're done making your SSDT, either head to the next page to finish the rest of the SSDTs or head here if you're ready to wrap up:
+一旦你完成了你的SSDT的制作，可以前往下一页完成其余的SSDT，或者如果你准备结束的话，可以前往这里：
 
-* [**Cleanup**](/cleanup.md)
+* [**清理工作**](/cleanup.md)
