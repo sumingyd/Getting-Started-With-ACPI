@@ -1,20 +1,17 @@
-# Fixing Uncore Bridges (SSDT-UNC)
+# 修复非核心桥段（SSDT-UNC）
 
-* [What this SSDT does](#what-this-ssdt-does)
-* [Methods to make this SSDT](#methods-to-make-this-ssdt)
+## 这个SSDT的作用
 
-## What this SSDT does
-
-This SSDT is required for all X99 and many X79 boards, it specifically disables unused devices in ACPI ensuing IOPCIFamily doesn't kernel panic. This requires very little configuration for the end user.
+所有的X99和许多X79板都需要这个SSDT，它特别禁用ACPI中未使用的设备，确保IOPCIFamily不会出现内核崩溃。这对终端用户来说需要很少的配置。
 
 * X79
 * C602
 * X99
 * C612
 
-## Methods to make this SSDT
+## 制作这个SSDT的方法
 
-The main ways to make this SSDT:
+制作这个SSDT的主要方法：
 
-* [Prebuilt](/Universal/unc0-methods/prebuilt.md)
-* [Manual](/Universal/unc0-methods/manual.md)
+* [预构建](/Universal/unc0-methods/prebuilt.md)
+* [手动](/Universal/unc0-methods/manual.md)

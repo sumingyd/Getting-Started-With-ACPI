@@ -1,19 +1,15 @@
-# Fixing Power Management (SSDT-PLUG)
+# 修复电源管理（SSDT-PLUG）
 
-* [Fixing Power Management (SSDT-PLUG)](#fixing-power-management-ssdt-plug)
-  * [What this SSDT does](#what-this-ssdt-does)
-  * [Methods to make this SSDT](#methods-to-make-this-ssdt)
+## 这个SSDT做什么
 
-## What this SSDT does
+SSDT-PLUG的目的是让内核的XCPM(XNU的CPU电源管理)来管理我们CPU的电源管理。这很好地解释了为什么你需要这个。
 
-The purpose of SSDT-PLUG is to allow the kernel's XCPM(XNU's CPU Power Management) to manage our CPU's power management. It's pretty self explanatory why you'd want this.
+**注意**：SSDT-PLUG只与英特尔的Haswell和更新的CPU兼容，Sandy Bridge和Ivy Bridge需要遵循[ssdtPRgen方法](https://sumingyd.github.io/OpenCore-Post-Install/universal/pm.html#sandy-and-ivy-bridge-power-management)(在安装后)，而AMD用户不应该使用这个(除非试图附加AGPM，这不在Dortania的指南范围之内)
 
-**Note**: SSDT-PLUG is only compatible with Intel's Haswell and newer CPUs, Sandy Bridge and Ivy Bridge will need to follow the [ssdtPRgen method](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html#sandy-and-ivy-bridge-power-management)(in post-install) while AMD users should not use this(unless attempting to attach AGPM which is outside the scope of Dortania's guides)
+## 使这个SSDT的方法
 
-## Methods to make this SSDT
+对于SSDT-PLUG，有三种方法可以选择。
 
-For SSDT-PLUG, there are 3 methods you can choose from:
-
-* [Prebuilt](/Universal/plug-methods/prebuilt.md)
+* [预构建](/Universal/plug-methods/prebuilt.md)
 * [SSDTTime](/Universal/plug-methods/ssdttime.md)
-* [Manual](/Universal/plug-methods/manual.md)
+* [手动](/Universal/plug-methods/manual.md)

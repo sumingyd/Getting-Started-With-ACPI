@@ -1,21 +1,18 @@
-# Fixing USB
+# 修复USB
 
-* [What this SSDT does](#what-this-ssdt-does)
-* [Methods to make this SSDT](#methods-to-make-this-ssdt)
+## 这个SSDT是做什么的
 
-## What this SSDT does
+在400系列主板上，某些OEM厂商破坏了ACPI规范，这导致了在启动MacOS时出现问题。为了解决这个问题，我们要关闭RHUB设备，强迫macOS手动重建端口。
 
-So on 400 series motherboards, certain OEMs have broken the ACPI spec and this results in issues when booting into macOS. To fix this, we'll want to turn off the RHUB device and force macOS to manually rebuild the ports.
+以下平台将需要修复。
 
-The following platforms will require fixing:
+* 移动Icelake（目前戴尔和联想是已知有此问题的两个平台）
+* 华硕Z490（技嘉和华擎的用户没有问题，微星目前是否有这个问题还不知道）
 
-* Mobile Icelake(currently Dell and Lenovo are the 2 known with this issue)
-* Asus Z490 (Gigabyte and AsRock users are fine, whether MSI currently this is unknown)
+## 使这个SSDT的方法
 
-## Methods to make this SSDT
+对于RHUB的修复，有3种方法可以选择。
 
-For the RHUB fix, there are 3 methods you can choose from:
-
-* [Prebuilt](/Universal/rhub-methods/prebuilt.md)
+* [预构建](/Universal/rhub-methods/prebuilt.md)
 * [SSDTTime](/Universal/rhub-methods/ssdttime.md)
-* [Manual](/Universal/rhub-methods/manual.md)
+* [手动](/Universal/rhub-methods/manual.md)

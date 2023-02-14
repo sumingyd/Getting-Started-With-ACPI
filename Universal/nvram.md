@@ -1,24 +1,21 @@
-# Fixing NVRAM (SSDT-PMC)
+# 修复NVRAM（SSDT-PMC）
 
-* [What this SSDT does](#what-this-ssdt-does)
-* [Methods to make this SSDT](#methods-to-make-this-ssdt)
+## 这个SSDT的作用
 
-## What this SSDT does
-
-This SSDT is required for all "true" 300 series motherboards(Z370 is excluded), it specifically brings back NVRAM support and requires very little configuration for the end user.
+所有 "真正的 "300系列主板都需要这个SSDT（Z370除外），它专门恢复了对NVRAM的支持，对最终用户来说只需要很少的配置。
 
 * B360
 * B365
 * H310
-* H370 (HM370 shouldn't require this)
+* H370（HM370应该不需要这个）。
 * Z390
 
-10th gen motherboards **do not** need this SSDT, NVRAM's native on these platforms.
+第10代主板**不需要**这个SSDT，这些平台上的NVRAM是原生的。
 
-## Methods to make this SSDT
+## 制作这种SSDT的方法
 
-The main ways to make this SSDT:
+制作这个SSDT的主要方法。
 
-* [Prebuilt](/Universal/nvram-methods/prebuilt.md)
+* [预构建](/Universal/nvram-methods/prebuilt.md)
 * [SSDTTime](/Universal/nvram-methods/ssdttime.md)
-* [Manual](/Universal/nvram-methods/manual.md)
+* [手动](/Universal/nvram-methods/manual.md)
