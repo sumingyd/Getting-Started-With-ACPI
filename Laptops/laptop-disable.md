@@ -1,10 +1,9 @@
 # 禁用笔记本电脑dgpu (SSDT-dGPU-Off/NoHybGfx)
 
-所以对于笔记本电脑，我们可以用WhateverGreen的`-wegnoegpu`引导参数隐藏macOS中的dGPU。但是有一个小问题，dGPU仍然在缓慢地消耗你的电量。我们将介绍在笔记本电脑中禁用dGPU的两种方法:
+So with laptops, we can hide the dGPU from macOS with the little boot-arg called `-wegnoegpu` from WhateverGreen. But one small problem, the dGPU is still pulling power draining your battery slowly. We'll be going over 2 methods for disabling the dGPU in a laptop:
 
-[[toc]]]
-
-注意，安装时不需要这样做，但建议安装后使用
+* [Optimus Method](#optimus-method)
+* [Bumblebee Method](#bumblebee-method)
 
 ## Optimus 方法
 

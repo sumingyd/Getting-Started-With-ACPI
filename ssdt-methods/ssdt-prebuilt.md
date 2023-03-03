@@ -2,7 +2,29 @@
 
 只需选择您的硬件类型和生成，然后下载相关文件。下载后，将它们放在EFI下的EFI/OC/ACPI下，然后返回[config.plist 设置](https://sumingyd.github.io/OpenCore-Install-Guide/config.plist/)
 
-[[toc]]]
+- [预先构建的ssdt](#预先构建的ssdt)
+    - [桌面 Penryn, Lynnfield 和 Clarkdale](#桌面-penryn-lynnfield-和-clarkdale)
+    - [桌面 Sandy 和 Ivy Bridge](#桌面-sandy-和-ivy-bridge)
+    - [桌面 Haswell 和 Broadwell](#桌面-haswell-和-broadwell)
+    - [桌面 Skylake 和 Kaby Lake](#桌面-skylake-和-kaby-lake)
+    - [桌面 Coffee Lake](#桌面-coffee-lake)
+    - [桌面 Comet Lake](#桌面-comet-lake)
+  - [Intel 笔记本 SSDTs](#intel-笔记本-ssdts)
+    - [笔记本 Clarksfield 和 Arrandale](#笔记本-clarksfield-和-arrandale)
+    - [笔记本 Sandy 和 Ivy Bridge](#笔记本-sandy-和-ivy-bridge)
+    - [笔记本 Haswell 和 Broadwell](#笔记本-haswell-和-broadwell)
+    - [笔记本 Skylake 和 Kaby Lake](#笔记本-skylake-和-kaby-lake)
+    - [笔记本 Coffee Lake (8th gen)](#笔记本-coffee-lake-8th-gen)
+    - [笔记本 Coffee 和 Comet Lake (9th and 10th gen)](#笔记本-coffee-和-comet-lake-9th-and-10th-gen)
+    - [笔记本 Ice Lake](#笔记本-ice-lake)
+  - [Intel HEDT SSDTs](#intel-hedt-ssdts)
+    - [Nehalem 和 Westmere](#nehalem-和-westmere)
+    - [Sandy 和 Ivy Bridge-E](#sandy-和-ivy-bridge-e)
+    - [Haswell 和 Broadwell-E](#haswell-和-broadwell-e)
+    - [Skylake 和 Cascade Lake-X/W](#skylake-和-cascade-lake-xw)
+  - [AMD SSDTs](#amd-ssdts)
+    - [AMD Bulldozer/Jaguar](#amd-bulldozerjaguar)
+    - [AMD Zen](#amd-zen)
 
 ### 桌面 Penryn, Lynnfield 和 Clarkdale
 
@@ -332,7 +354,7 @@ SSDT-XOSI:
 
 :::
 
-### 笔记本 Coffee Lake(8th gen)
+### 笔记本 Coffee Lake (8th gen)
 
 ::: tip 所需的ssds
 
@@ -374,7 +396,7 @@ SSDT-XOSI:
 
 :::
 
-### 笔记本 Coffee 和 Comet Lake(9th and 10th gen)
+### 笔记本 Coffee 和 Comet Lake (9th and 10th gen)
 
 ::: tip 所需的ssds
 
