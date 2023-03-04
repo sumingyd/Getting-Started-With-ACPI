@@ -1,9 +1,9 @@
 # 禁用桌面不支持的gpu (SSDT-GPU-DISABLE)
 
-* [Finding the ACPI Path of the GPU](#finding-the-acpi-path-of-the-gpu)
-* [Making the SSDT](#making-the-ssdt)
+* [查找GPU的ACPI路径](#查找gpu的acpi路径)
+* [制作SSDT](#制作ssdt)
 
-This is mainly needed for GPUs that are not supported in macOS, mainly this will be Nvidia users who wish to pair an AMD GPU for macOS use. While WhateverGreen does support the boot-arg `-wegnoegpu`, this only works when running on iGPU so for the rest of us we'll need to make an SSDT.
+这主要是在macOS不支持的GPU上需要的，主要是那些希望为macOS使用配对AMD GPU的Nvidia用户。虽然WhateverGreen确实支持boot-arg `-wegnoegpu`，但这只在iGPU上运行时有效，所以对于我们其他人来说，我们需要创建一个SSDT。
 
 * CPI GPU路径
 * [SSDT-GPU-DISABLE](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/decompiled/SSDT-GPU-DISABLE.dsl.zip)
