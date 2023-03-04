@@ -1,8 +1,6 @@
 # 修复IMEI：手动
 
-* [Finding the ACPI device](#finding-the-acpi-device)
-* [Compiling the SSDT](#compiling-the-ssdt)
-* [Wrapping up](#wrapping-up)
+[[toc]]
 
 寻找ACPI设备的路径其实很容易，首先用MaciASL（如果在macOS中）或任何其他文本编辑器（如果在Windows或Linux中）打开你从[Dumping the DSDT](/Manual/dump.md)和[Decompiling and Compiling](/Manual/compile.md)得到的反编译的DSDT（VSCode有一个[ACPI扩展](https://marketplace.visualstudio.com/items?itemName=Thog.vscode-asl)，也能帮助你。
 

@@ -1,7 +1,6 @@
 # 修复非核心桥：手动
 
-* [Download the SSDT](#download-the-ssdt)
-* [Wrapping up](#wrapping-up)
+[[toc]]
 
 超级简单，只需抓取SSDT并进行编译：
 
