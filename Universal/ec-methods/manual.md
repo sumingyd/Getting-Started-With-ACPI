@@ -1,93 +1,82 @@
-# Fixing Embedded Controllers: Manual
+# 修复嵌入式控制器:手动
 
-* [Fixing Embedded Controllers: Manual](#fixing-embedded-controllers-manual)
-  * [Finding the ACPI path](#finding-the-acpi-path)
-    * [DSDT](#dsdt)
-    * [DeviceManager](#devicemanager)
-  * [Edits to the sample SSDT](#edits-to-the-sample-ssdt)
-  * [Edge Cases](#edge-cases)
-    * [Multiple PNP0C09's show up](#multiple-pnp0c09s-show-up)
-    * [No PNP0C09 show up](#no-pnp0c09-show-up)
-    * [PNP0C09 already named `EC`](#pnp0c09-already-named-ec)
-    * [PNP0C09 already has a `_STA` method](#pnp0c09-already-has-a-_sta-method)
-  * [Compiling the SSDT](#compiling-the-ssdt)
-  * [Wrapping up](#wrapping-up)
+[[toc]]
 
-TO-DO:
+待办事项:
 
-* Finish Edge cases and sample SSDT edits
+* 完成边缘案例和SSDT编辑示例
 
-## Finding the ACPI path
+## 查找ACPI路径
 
-To find the ACPI pathing, you have 2 methods:
+要找到ACPI路径，你有两个方法:
 
 * [DSDT](#dsdt)
-* [DeviceManager](#devicemanager)
+* [设备管理](#设备管理器)
 
 ### DSDT
 
-Finding the ACPI pathing is quite easy actually, first open your decompiled DSDT you got from [Dumping the DSDT](/Manual/dump.md) and [Decompiling and Compiling](/Manual/compile.md) with either MaciASL(if in macOS) or any other text editor if in Windows or Linux(VSCode has an [ACPI extension](https://marketplace.visualstudio.com/items?itemName=Thog.vscode-asl) that can also help).
+找到ACPI的路径是相当容易的，首先打开你从[转储DSDT](/Manual/dump.md)和[编译和编译](/Manual/compile.md)与MaciASL(如果在macOS)或任何其他文本编辑器，如果在Windows或Linux(VSCode有一个[ACPI扩展](https://marketplace.visualstudio.com/items?itemName=Thog.vscode-asl)也可以帮助)的反编译DSDT。
 
-Next, search for `PNP0C09`. You should get something similar:
+接下来，搜索`PNP0C09`。你应该得到类似:
 
 ![](../../images/Desktops/pnp.png)
 
-From the above example we see 2 main things:
+从上面的例子中我们可以看到两个主要的东西:
 
-* Name of our embedded controller
-  * In this case being `EC0`
-* Pathing of our embedded controller
+* 我们的嵌入式控制器的名称
+  * 在本例中是`EC0`
+* 我们嵌入式控制器的路径
   * `PC00.LPC0`
 
-But now we get into edge case territory, what fun!
+但现在我们进入了边界情况，太有趣了!
 
-The main ones to check for are:
+需要检查的主要有:
 
-* [Fixing Embedded Controllers: Manual](#fixing-embedded-controllers-manual)
-  * [Finding the ACPI path](#finding-the-acpi-path)
+* [修复嵌入式控制器:手动](#修复嵌入式控制器手动)
+  * [查找ACPI路径](#查找acpi路径)
     * [DSDT](#dsdt)
-    * [DeviceManager](#devicemanager)
-  * [Edits to the sample SSDT](#edits-to-the-sample-ssdt)
-  * [Edge Cases](#edge-cases)
-    * [Multiple PNP0C09's show up](#multiple-pnp0c09s-show-up)
-    * [No PNP0C09 show up](#no-pnp0c09-show-up)
-    * [PNP0C09 already named `EC`](#pnp0c09-already-named-ec)
-    * [PNP0C09 already has a `_STA` method](#pnp0c09-already-has-a-_sta-method)
-  * [Compiling the SSDT](#compiling-the-ssdt)
-  * [Wrapping up](#wrapping-up)
+    * [设备管理器](#设备管理器)
+  * [对示例SSDT进行编辑](#对示例ssdt进行编辑)
+  * [边缘情况](#边缘情况)
+    * [出现多个PNP0C09](#出现多个pnp0c09)
+    * [没有PNP0C09出现](#没有pnp0c09出现)
+    * [PNP0C09已经命名为`EC`](#pnp0c09已经命名为ec)
+    * [PNP0C09已经有了一个`_STA`方法](#pnp0c09已经有了一个_sta方法)
+  * [编译SSDT](#编译ssdt)
+  * [结束](#结束)
 
-If none of the above apply to you, you're ready for the next section:
+如果以上这些都不适用于你，那么你已经为下一节做好了准备:
 
-### DeviceManager
+### 设备管理器
 
-If you already have Windows installed on this machine, finding the EC pathing is fairly easy.
+如果您已经在这台机器上安装了Windows，那么找到EC路径是相当容易的。
 
-Start by opening up Device Manager in Windows and looking for a device named `Embedded Controller`. Once found, click on it and select the `BIOS device Name` entry. You should get something like this:
+首先在Windows中打开设备管理器并查找名为“嵌入式控制器”的设备。找到后，单击它并选择“BIOS设备名称”条目。你会得到这样的结果:
 
 ![](../../images/Desktops/ec.png)
 
-From the above, we can see that our pathing is `SB.PC00.LPC0.EC0`
+从上面可以看到，我们的路径是`SB.PC00.LPC0.EC0`。
 
-Now with the pathing, you can head here: [Edits to the sample SSDT](#edits-to-the-sample-ssdt)
+现在有了路径，你可以转到这里: [对示例SSDT进行编辑](#对示例ssdt进行编辑)
 
-## Edits to the sample SSDT
+## 对示例SSDT进行编辑
 
-Now that we have our ACPI path, lets grab our SSDT and get to work:
+现在我们有了我们的ACPI路径，让我们获取我们的SSDT并开始工作:
 
 * [SSDT-EC-USBX](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-EC-USBX.dsl)
-  * For Skylake and newer and all AMD systems
+  * 用于Skylake和更新的所有AMD系统
 * [SSDT-EC](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-EC.dsl)
-  * For Broadwell and older
+  * 给Broadwell和更老的人
   
-Now when opening this SSDT, you'll notice a few things. Mainly:
+现在，当打开这个SSDT时，您将注意到一些事情。主要有:
 
-* Some code is commented out
-  * This is code for disabling our EC
-  * Laptops users **SHOULD NOT** uncomment this
-* There's a new EC called `Device (EC)`
-  * **DO NOT RENAME THIS**, this will be the EC we give to macOS
+* 一些代码被注释掉了
+  * 这是禁用我们的EC的代码
+  * 笔记本电脑用户**不应**取消此注释
+* 有一个新的EC叫做`Device (EC)`
+  * **不要重命名**，这将是我们提供给macOS的EC
   
-**Before**:
+**之前**:
 
 ```
 External (_SB_.PCI0.LPCB, DeviceObj) <- Rename this
@@ -97,9 +86,9 @@ Scope (_SB.PCI0.LPCB) <- Rename this
 
 ![](../../images/Desktops/ssdt-before.png)
 
-Following the example pathing we found, the SSDT should look something like this:
+在我们找到的示例路径之后，SSDT应该看起来像这样:
 
-**After**:
+**之后**:
 
 ```
 External (_SB_.PC00.LPC0, DeviceObj) <- Renamed
@@ -109,48 +98,48 @@ Scope (_SB.PC00.LPC0) <- Renamed
 
 ![](../../images/Desktops/ssdt-after.png)
 
-## Edge Cases
+## 边缘情况
 
-### Multiple PNP0C09's show up
+### 出现多个PNP0C09
 
-When multiple PNP0C09 show up, we need to next check for the following properties:
+当显示出多个PNP0C09时，我们需要检查以下属性:
 
-* `_HID` (Hardware ID)
-* `_CRS` (Current Resource Settings)
-* `_GPE` (General Purpose Events)
+* `_HID` (硬件ID)
+* `_CRS` (当前资源设置)
+* `_GPE` (通用事件)
 
-What these signify is whether this PNP0C09 device is real or not, as per the [ACPI spec](https://uefi.org/sites/default/files/resources/ACPI_6_3_final_Jan30.pdf). So one's matching the above criteria are the one's we want to disable.
+这些表示的是这个PNP0C09设备是否真实，根据[ACPI规范](https://uefi.org/sites/default/files/resources/ACPI_6_3_final_Jan30.pdf). 所以符合上述条件的就是我们想要禁用的。
 
-* Note: If _STA shows up as well, you'll need to go here: [PNP0C09 already has a `_STA` method](#pnp0c09-already-has-a-sta-method)  <!-- markdownlint-disable-line MD051 -->
+* 注意:如果_STA也显示了，你需要到这里:[PNP0C09已经有一个`_STA`方法](#pnp0c09已经有了一个_sta方法)  <!-- markdownlint-disable-line MD051 -->
 
-### No PNP0C09 show up
+### 没有PNP0C09出现
 
-When this happens, you'll only need to create a "dummy" EC for macOS.
+当这种情况发生时，你只需要为macOS创建一个“虚拟”EC。
 
-Try searching for any devices named: "LPCB", "LPC0", "LPC", "SBRG", "PX40". If you have any of these, try using the LPC pathing of each of those device in place of the Embedded Controller's pathing.
+尝试搜索任何名为“LPCB”，“LPC0”，“LPC”，“SBRG”，“PX40”的设备。如果你有其中任何一个，尝试使用这些设备的LPC路径来代替嵌入式控制器的路径。
 
-Note that **DO NOT** uncomment the EC disabling code as there are no devices that are considered "EC" in your machine.
+请注意**不要**取消EC禁用代码的注释，因为在你的机器中没有被认为是“EC”的设备。
 
-### PNP0C09 already named `EC`
+### PNP0C09已经命名为`EC`
 
-Congrats! No need to create an SSDT-EC! However you will still want USBX if you're Skylake or newer.
+祝贺你!不需要创建SSDT-EC!然而，如果你是Skylake或更新的，你仍然会想要USBX。
 
-Prebuilt can be grabbed here: [SSDT-USBX.aml](https://github.com/dortania/OpenCore-Post-Install/blob/master/extra-files/SSDT-USBX.aml)
+预构建可以在这里获取: [SSDT-USBX.aml](https://github.com/dortania/OpenCore-Post-Install/blob/master/extra-files/SSDT-USBX.aml)
 
-### PNP0C09 already has a `_STA` method
+### PNP0C09已经有了一个`_STA`方法
 
-This is the equivalent of not having an EC as we can't control it with our SSDT-EC, instead we'll need to create a "dummy" EC for macOS. You'll still want to find the PCI and LPC pathing for this device. So follow the guide as if you were creating a laptop SSDT-EC/USBX.
+这相当于没有一个EC，因为我们无法通过SSDT-EC控制它，相反，我们需要为macOS创建一个“虚拟”EC。您仍然需要找到此设备的PCI和LPC路径。所以，就像创建一台笔记本电脑SSDT-EC/USBX一样，按照指南操作。
 
-Example of an EC with STA already:
+已经有STA的EC的例子:
 
 ![Credit to rottenpants466](../../images/Desktops/sta.png)
 
-## Compiling the SSDT
+## 编译SSDT
 
- With the SSDT done, you're now [ready to compile the SSDT!](/Manual/compile.md)
+ 完成SSDT后，您现在可以[准备编译SSDT!](/Manual/compile.md)
 
-## Wrapping up
+## 结束
 
-Once you're done making your SSDT, either head to the next page to finish the rest of the SSDTs or head here if you're ready to wrap up:
+完成SSDT后，可以转到下一页完成其余的SSDT，如果准备好了，可以转到此处:
 
 * [**Cleanup**](/cleanup.md)
