@@ -1,29 +1,29 @@
-# Fixing Trackpads: Manual
+# 修复触控板:手动
 
-* [Checking GPI0](#checking-gpi0)
-* [Edits to the sample SSDT](#edits-to-the-sample-ssdt)
-* [Enabling Trackpad](#enabling-trackpad)
-* [Wrapping up](#wrapping-up)
+* [检查 GPI0](#检查gpi0)
+* [对示例 SSDT 进行编辑](#对示例ssdt进行编辑)
+* [启用触摸板](#启用触摸板)
+* [Wrapping up](#结束)
 
-## Checking GPI0
+## 检查GPI0
 
-This page assumes that you have macOS installed as well as [IORegistryExplorer](https://github.com/khronokernel/IORegistryClone/blob/master/ioreg-302.zip).
+本页面假设你已经安装了macOS和[IORegistryExplorer](https://github.com/khronokernel/IORegistryClone/blob/master/ioreg-302.zip).
 
-The first thing to check is whether the GPI0 device exists, which is required for VoodooI2C. The best way to check this is working is to use IORegistryExplorer.
+首先要检查GPI0设备是否存在，这是VoodooI2C所需要的。检查它是否正常工作的最好方法是使用IORegistryExplorer。
 
 ![](../../images/Laptops/trackpad-md/gpio-enabled.png)
 
-Here, we can see that VoodooGPIO is attached to GPI0 so no edits are needed for GPI0. If this is the case for you, you can skip to the [next section](#enabling-trackpad).
+在这里，我们可以看到VoodooGPIO连接到GPI0，因此不需要对GPI0进行编辑。如果你是这种情况，你可以跳到[下一节](#启用触摸板).
 
-If VoodooGPIO isn't attached, then you may need to modify some values to enable the `GPI0` device. In that case, you will need to find the GPI0 device in your DSDT.
+如果VoodooGPIO没有连接，那么你可能需要修改一些值来启用`GPI0`设备。在这种情况下，您需要在DSDT中找到GPI0设备。
 
-First open your decompiled DSDT you got from [Dumping the DSDT](/Manual/dump.md) and [Decompiling and Compiling](/Manual/compile.md) with either MaciASL (if in macOS) or any other text editor if in Windows or Linux (VSCode has an [ACPI extension](https://marketplace.visualstudio.com/items?itemName=Thog.vscode-asl) that can also help).
+首先打开你的反编译DSDT你从[转储DSDT](/Manual/dump.md)和[反编译和编译](/Manual/compile.md)与MaciASL(如果在macOS)或任何其他文本编辑器，如果在Windows或Linux (VSCode有一个[ACPI扩展](https://marketplace.visualstudio.com/items?itemName=Thog.vscode-asl)也可以帮助)。
 
-Next search for `Device (GPI0)`. You should get a result similar to this:
+接下来搜索`Device (GPI0)`。你应该得到类似这样的结果:
 
 ![](../../images/Laptops/trackpad-md/gpi0-2.png)
 
-Below is the `_STA` method, which enables or disable the GPI0 device:
+下面是`_STA`方法，用于启用或禁用GPI0设备:
 
 ```
 Method (_STA, 0, NotSerialized)
@@ -42,12 +42,12 @@ Method (_STA, 0, NotSerialized)
 }
 ```
 
-We want the value returned from _STA to be non-zero (0x0F in this case) to enable the `GPI0` device. If either `SBRG` or `GPEN` is equal to zero, then zero will be returned and `GPI0` will be disabled. Generally, `SBRG` should not be modified, as modifying it can break the `GPI0` device. Only modify `GPEN` if you need to enable the `GPI0` device.
+我们希望从_STA返回的值非零(在本例中为0x0F)以启用`GPI0`设备。如果`SBRG`或`GPEN`的值为零，则返回零，`GPI0`将被禁用。一般来说，`SBRG`不应该被修改，因为修改它会破坏`GPI0`设备。如果你需要启用`GPI0`设备，只需要修改`GPEN`。
 
-Here's some more examples:
+下面是更多的例子:
 ![](../../images/Laptops/trackpad-md/gpi0.png)
 
-What we care about from this is the `_STA` method:
+我们关心的是`_STA`方法:
 
 ```
 Method (_STA, 0, NotSerialized)
@@ -61,25 +61,25 @@ Method (_STA, 0, NotSerialized)
 }
 ```
 
-Here we would want to set `GPHD` to `Zero` so that 0x0F is returned.
+这里我们想将`GPHD`设置为` Zero `，以便返回0x0F。
 
-## Edits to the sample SSDT
+## 对示例SSDT进行编辑
 
-Now that we know what variables need to be changed, lets grab our SSDT and get to work:
+现在我们知道需要修改哪些变量，让我们获取SSDT并开始工作:
 
 * [SSDT-GPI0.dsl](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/decompiled/SSDT-GPI0.dsl)
 
-From the first example, we'll want to set GPEN to `One` to allow it to operate in macOS:
+在第一个例子中，我们将GPEN设置为`One`以允许它在macOS中运行:
 
 ```
-// This is likely already set in the SSDT-GPIO you just downloaded
+// 这可能已经在你下载的SSDT-GPIO中设置好了
 If (_OSI ("Darwin"))
 {
     GPEN = One
 }
 ```
 
-For the second example, you'd want to remove GPEN and use the below:
+对于第二个示例，您需要删除GPEN并使用下面的代码:
 
 ```
 If (_OSI ("Darwin"))
@@ -88,17 +88,17 @@ If (_OSI ("Darwin"))
 }
 ```
 
-You will want to test the SSDT at this point by [compiling the SSDT](/Manual/compile.md) and adding it to your config.plist. VoodooGPIO should now be attached to the GPI0 device as shown at the top of the GPI0 section. If your trackpad still doesn't work after enabling the `GPI0` device, move on to the next section.
+此时，您需要通过[编译SSDT](/Manual/compile.md)并将其添加到config.plist中来测试SSDT。VoodooGPIO现在应该连接到GPI0设备，如GPI0部分顶部所示。如果你的触控板在启用`GPI0`设备后仍然不能工作，请继续下一节。
 
-## Enabling Trackpad
+## 启用触摸板
 
-Often times, the I2C devices check to see if they are running in Windows before enabling themselves. Similarly to the `GPI0` device, these devices contain a `_STA` method.
+通常情况下，I2C设备在启用之前会检查它们是否在Windows中运行。与`GPI0`设备类似，这些设备包含一个`_STA`方法。
 
-::: details _STA Example (Optional)
+::: details _STA 示例 (可选)
 
 ![](../../images/Laptops/trackpad-md/I2C1.png)
 
-The part we care about is the `_STA` method:
+我们关心的部分是`_STA`方法:
 
 ```
 Method (_STA, 0, NotSerialized)  // _STA: Status
@@ -107,7 +107,7 @@ Method (_STA, 0, NotSerialized)  // _STA: Status
 }
 ```
 
-In this case, `_STA` is referring to another method, `LSTA`. If we search for `Method (LSTA`, we'll see the below:
+在这个例子中，`_STA`指向另一个方法`LSTA`。如果我们搜索`Method (LSTA`，我们会看到以下内容:
 
 ```
 Method (LSTA, 1, Serialized)
@@ -129,23 +129,23 @@ Method (LSTA, 1, Serialized)
 }
 ```
 
-The value `OSYS`, stores information about the current OS running. We will want to look for any place in which `OSYS` is set (`OSYS = 0x07DC` for example). In this DSDT, this is set under `\_SB.PCI0._INI` as shown below:
+取值为`OSYS`，保存当前操作系统的运行信息。我们需要查找任何设置了`OSYS`的位置(例如`OSYS = 0x07DC`)。在这个DSDT中，它被设置在`\_SB.PCI0._INI`下。如下所示:
 
 ![](../../images/Laptops/trackpad-md/ini.png)
 
-There are various checks for many different versions of Windows, but there is no check for `Darwin` (which Apple's ACPI usually checks for). We generally want to set `OSYS` to the highest possible value to enable the most features. In this case, the highest value is set when the version of Windows is "Windows 2015", or [Windows 10](https://docs.microsoft.com/en-us/windows-hardware/drivers/acpi/winacpi-osi#_osi-strings-for-windows-operating-systems). This means that we should set `OSYS` to `0x07DF`. Notice that this value is greater than `0x07DC`, which is the value that was checked for earlier. If we set `OSYS` to `0x07DF`, then the check in LSTA should return `0x0F`.
+对不同版本的Windows有各种各样的检查，但没有对`Darwin`的检查(苹果的ACPI通常会检查这个)。我们通常希望将`OSYS`设置为尽可能高的值以启用大多数功能。在本例中，当Windows版本为`Windows 2015`或[Windows 10](https://docs.microsoft.com/en-us/windows-hardware/drivers/acpi/winacpi-osi#_osi-strings-for-windows-operating-systems)时，设置的值最高。这意味着我们应该将`OSYS`设置为`0x07DF`。注意，这个值大于`0x07DC`，这是之前检查的值。如果我们将`OSYS`设置为`0x07DF`，那么LSTA中的检查应该返回`0x0F`。
 
 :::
 
-The best way to patch these checks is to use _OSI to XOSI with SSDT-XOSI. You can also set `OSYS` within the scope of the I2C device, though this may not always work (The above example would not work here as LSTA is not within the scope of the I2C device).
+为这些检查打补丁的最好方法是在SSDT-XOSI中使用_OSI to XOSI。您还可以在I2C设备的范围内设置`OSYS`，尽管这可能并不总是有效(上面的示例在这里不起作用，因为LSTA不在I2C设备的范围内)。
 
 ### _OSI to XOSI
 
-Requires the below SSDT and patch
+需要以下SSDT和补丁
 
-* [SSDT-XOSI.dsl](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/decompiled/SSDT-XOSI.dsl) - If you need to edit [which versions of Windows the SSDT checks for](https://docs.microsoft.com/en-us/windows-hardware/drivers/acpi/winacpi-osi#_osi-strings-for-windows-operating-systems).
-* [SSDT-XOSI.aml](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-XOSI.aml) - Precompiled
-* XOSI Rename (Add this under ACPI -> Patch in your config.plist):
+* [SSDT-XOSI.dsl](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/decompiled/SSDT-XOSI.dsl) - 如果您需要编辑[which versions of Windows the SSDT checks for](https://docs.microsoft.com/en-us/windows-hardware/drivers/acpi/winacpi-osi#_osi-strings-for-windows-operating-systems).
+* [SSDT-XOSI.aml](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-XOSI.aml) - 预编译
+* XOSI 重命名 (添加这个到 ACPI -> Patch in your config.plist):
 
 | Comment | String | Change \_OSI to XOSI |
 | :------ | :------ | :------- |
@@ -155,11 +155,11 @@ Requires the below SSDT and patch
 | Find    | Data    | 5f4f5349 |
 | Replace | Data    | 584f5349 |
 
-::: details Dell Machines
+::: details 戴尔的机器
 
-You may need to add the below patch to allow the backlight keys to work.
-Make sure that this patch appears **BEFORE** the previous \_OSI to XOSI patch in your config.plist
-Credit to Rehabman for the below patch:
+您可能需要添加下面的补丁，以允许背光键工作。
+请确保此补丁出现在config.plist中之前的\_OSI到XOSI补丁的**之前**
+以下补丁由Rehabman提供:
 
 | Comment | String | Change \_OSID to XSID (to avoid match against \_OSI patch)
 | :------ | :----- | :-------- |
@@ -171,9 +171,9 @@ Credit to Rehabman for the below patch:
 
 :::
 
-### Create OSYS Variable Under I2C Scope
+### 创建OSYS变量在I2C范围内
 
-You will need to find the device path where OSYS is checked, then create a new OSYS variable within that scope. This will only change OSYS for devices under this scope, which can allow for finer control over what is enabled. Note that in the example above, `LSTA` exists under `\_SB.PCI0.LSTA`, meaning that both `\_SB.PCI0._INI` and `\_SB.PCI0.LSTA` will control the same OSYS variable. If this is the case, this method will not work.
+你需要找到检查了OSYS的设备路径，然后在该范围内创建一个新的OSYS变量。这只会改变该范围内设备的ossys，以便更好地控制启用的设备。注意，在上面的例子中，`LSTA`存在于`\_SB.PCI0.LSTA`，意味着`\_SB.PCI0. 0._INI`和`\_SB.PCI0.LSTA`将控制相同的OSYS变量。如果是这种情况，此方法将不起作用。
 
 ```
 If (_OSI("Darwin")) {
@@ -183,18 +183,18 @@ If (_OSI("Darwin")) {
 }
 ```
 
-::: tip Multiple Windows Versions
+::: tip 多个Windows版本
 
-Windows will also return true for checks of earlier versions of Windows. For example, Windows 7 would return true for "Windows 2000" through "Windows 2009", but not any version after. This is important as some features are only enabled in earlier Windows checks. For example, DYTC thermal management on newer ThinkPads is only enabled in the check for "Windows 2001". You will need to check your own DSDT and see what values it sets and where they are used. At this point, you should [compiling the SSDT](/Manual/compile.md) and see if the trackpad works.
+Windows在检查Windows的早期版本时也会返回true。例如，Windows 7在"Windows 2000"到"Windows 2009"之间都会返回true，但在此之后的任何版本都不会返回true。这一点很重要，因为一些功能只在早期的Windows检查中启用。例如，新款thinkpad上的DYTC热管理功能只有在检查“Windows 2001”时才能启用。你需要检查你自己的DSDT，看看它设置了什么值，以及它们在哪里被使用。此时，你应该[编译SSDT](/Manual/compile.md)并查看触控板是否工作。
 
 :::
 
-## Further Setup
+## 进一步设置
 
-If you need further help getting your trackpad to work, then the best place to look is [VoodooI2C's readme](https://github.com/VoodooI2C/VoodooI2C)
+如果你需要进一步的帮助让你的触控板工作，那么最好的地方是[VoodooI2C的readme](https://github.com/VoodooI2C/VoodooI2C)
 
-## Wrapping up
+## 结束
 
-Once you're done making your SSDT, either head to the next page to finish the rest of the SSDTs or head here if you're ready to wrap up:
+完成SSDT后，可以转到下一页完成其余的SSDT，如果准备好了，可以转到此处:
 
 * [**Cleanup**](/cleanup.md)
